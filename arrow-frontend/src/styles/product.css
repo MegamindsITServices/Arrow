@@ -1,0 +1,83 @@
+.card-6 {
+  width: 11rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 79%;
+}
+.pagination-wrapper {
+  margin-top: 5rem;
+}
+
+/* .card-6 {
+  width: 16rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 93%;
+} */
+
+/* .card-img-top {
+  width: 100%;
+  height: auto;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+} */
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-row {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+.card-body-product {
+  margin-left: 10px;
+}
+.p-name {
+  color: red;
+  margin-top: 10px;
+  font-size: 10px;
+  margin-bottom: 1px;
+}
+.p-desc {
+  font-size: 10px;
+  margin-bottom: -3px;
+}
+.post-name {
+  color: black;
+  font-size: 14px;
+}
+.post-desc {
+  color: black;
+  font-size: 14px;
+}
+/* Hide the table headers on smaller screens to save space */
+@media (max-width: 768px) {
+  .card-6 {
+    width: 18rem;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+  }
+  .pagination-wrapper {
+    margin-top: 2rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .product-grid {
+    padding-left: 6rem;
+  }
+}

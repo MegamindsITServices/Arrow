@@ -1,0 +1,118 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.hero-6 {
+  background-image: url("../../public/images/Growth-Path.jpg");
+  padding: calc(4rem - 30px) 0 0rem 0;
+  height: 300px;
+  position: relative;
+  box-shadow: 0px 30px 10px -20px rgba(50, 50, 93, 0.25),
+    0px 30px 60px -30px rgba(0, 0, 0, 0.3),
+    inset 0px -2px 6px 0px rgba(10, 37, 64, 0.35);
+  background-repeat: no-repeat;
+  background-size: cover; /* Ensure the background image covers the entire container */
+  background-position: center; /* Center the background image horizontally and vertically */
+}
+
+@media (min-width: 768px) {
+  .hero {
+    padding: calc(4rem - 30px) 0 4rem 0;
+  }
+}
+@media (min-width: 992px) {
+  .hero {
+    padding: calc(8rem - 30px) 0 8rem 0;
+  }
+}
+.hero .intro-excerpt {
+  position: relative;
+  z-index: 4;
+}
+@media (min-width: 992px) {
+  .hero .intro-excerpt {
+    max-width: 450px;
+  }
+}
+.hero h1 {
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 30px;
+}
+@media (min-width: 1400px) {
+  .hero h1 {
+    font-size: 54px;
+  }
+}
+.hero p {
+  color: rgba(255, 255, 255, 0.5);
+  margin-botom: 30px;
+}
+.hero .hero-img-wrap {
+  position: relative;
+}
+.hero .hero-img-wrap img {
+  position: relative;
+  top: 0px;
+  right: 0px;
+  z-index: 2;
+  max-width: 780px;
+  left: -20px;
+}
+
+@media (min-width: 992px) {
+  .hero .hero-img-wrap img {
+    left: 0px;
+    top: -80px;
+    position: absolute;
+    right: -50px;
+  }
+}
+@media (min-width: 1200px) {
+  .hero .hero-img-wrap img {
+    left: 0px;
+    top: -80px;
+    right: -100px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero .hero-img-wrap:after {
+    top: -40px;
+  }
+}
+.intro-excerpt-growpath {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin-top: 160px;
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Segoe UI Regular"),
+    url("../../public/fonts/Segoe\ UI.woff") format("woff");
+}
+.path {
+  color: #e0731d;
+}
+
+.growimage {
+  width: 100vw;
+}
+@media (max-width: 768px) {
+  .intro-excerpt-growpath {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-top: 200px;
+    margin-left: 5px;
+    font-family: "Segoe UI";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Segoe UI Regular"),
+      url("../../public/fonts/Segoe\ UI.woff") format("woff");
+  }
+}

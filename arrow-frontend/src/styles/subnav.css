@@ -1,0 +1,29 @@
+.first {
+  background-color: #656c74;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+}
+.header-mail {
+  font-size: 17px;
+  color: white;
+  margin-top: 20px;
+  margin-left: 24px;
+  margin-right: -51px;
+}
+.header-phone {
+  font-size: 17px;
+  margin-top: 20px;
+  color: white;
+  margin-right: 7px;
+}
+.phone-mail {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 15%;
+}
+.active-nav:hover {
+  color: white;
+}

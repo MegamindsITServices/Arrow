@@ -1,0 +1,136 @@
+.textbook-body {
+  background-color: white;
+  height: 70vh;
+}
+.swiper {
+  margin-top: 10px;
+}
+.swiper-mobile {
+  display: none;
+}
+.textbook-button {
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #e0731d;
+  border: 2px solid #e0731d;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 11px 32px;
+  margin-top: 20px;
+  margin-left: 40%;
+}
+.card-img-textbook {
+  height: 250px;
+  width: 190px;
+  margin-left: 20px;
+}
+.line {
+  color: gray;
+  border: 1px solid gray;
+}
+.download-catalogue-link {
+  margin-right: 43%;
+  margin-top: 4px;
+  font-size: 16px;
+  color: #e0731d;
+}
+.pdf {
+  margin-left: 43%;
+}
+.download-catalogue {
+  margin-top: 50px;
+}
+.intro-excerpt-textbook {
+  display: flex;
+  justify-content: space-between; /* Distribute items along the main axis */
+  align-items: center;
+  color: white;
+  margin-right: 50%;
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Segoe UI Regular"),
+    url("../../public/fonts/Segoe\ UI.woff") format("woff");
+  margin-top: 85px;
+  font-size: 40px;
+}
+.card-img-newrealease {
+  height: 250px;
+  width: 190px;
+}
+.download {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.new-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #ff0000;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 50%;
+  font-size: 12px;
+}
+
+@media (max-width: 768px) {
+  .intro-excerpt-textbook {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    margin-right: 50%;
+    font: normal normal normal "Segoe UI", local("Segoe UI Regular"),
+      url("../../public/fonts/Segoe\ UI.woff") format("woff");
+    margin-top: 10px;
+  }
+  .card-img-textbook {
+    height: 230px;
+    width: 140px;
+    display: block;
+  }
+
+  .card-1 {
+    width: 50%; /* Ensure each card takes up half the width of the screen */
+    margin: 0;
+    height: auto;
+    display: block;
+    padding: 2 0px;
+    padding-right: 6px;
+  }
+  .download-catalogue {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .pdf {
+    margin-right: 5px; /* Adjust as needed */
+  }
+  .card-img-newrealease {
+    height: 230px;
+    width: 140px;
+    display: block;
+  }
+  .download-catalogue-link {
+    margin-left: 5px; /* Adjust as needed */
+    font-size: 14px;
+  }
+  .pdf {
+    margin-left: 22%;
+  }
+  .download {
+    margin-right: 67px;
+    margin-bottom: 30px;
+  }
+}
