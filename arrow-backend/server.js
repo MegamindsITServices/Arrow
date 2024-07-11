@@ -128,7 +128,7 @@ app.get("/api/visitor-count", async (req, res) => {
 });
 
 app.get("/api/visitors", async (req, res) => {
-  const visitor = await Visitor.findById("6669146a0c3687ba21e5bb75");
+  const visitor = await Visitor.findOne();
   res.json({
     visitors: visitor.counter,
   });
