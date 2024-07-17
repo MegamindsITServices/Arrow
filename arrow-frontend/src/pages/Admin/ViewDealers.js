@@ -119,7 +119,7 @@ const ViewDealers = () => {
                               }
                               className="dealer-update-button ms-2"
                             >
-                              Update
+                              Edit
                             </button>
                           </td>
                         </tr>
