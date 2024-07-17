@@ -41,10 +41,13 @@ const CreateDealer = () => {
         formData
       );
       if (data?.success) {
-        toast.success(data?.message);
-      } else {
         swal("Congrats", "Post Uploaded SuccessFully", "success");
-        console.log(formData);
+        setAddress("");
+        setArea("");
+        setDealername("");
+        setDesignation("");
+        setEmail("");
+        setPhone("");
       }
     } catch (error) {
       console.log(error);
@@ -54,7 +57,7 @@ const CreateDealer = () => {
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
   //   try {
-  //     await getConfig();
+  //
 
   //     const formData = new FormData();
   //     formData.append("dealername", dealername);
@@ -84,7 +87,9 @@ const CreateDealer = () => {
 
   const getAllState = async () => {
     try {
-      const response = await axios.get("/api/v1/dealerstate/get-state");
+      const response = await axios.get(
+        "/api/v1/dealerstate/get-state"
+      );
       const data = response.data;
       // console.log("Response data:", data);
       if (data && data.success) {
