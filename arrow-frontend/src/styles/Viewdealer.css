@@ -9,10 +9,26 @@
   flex-direction: row;
   background-color: white;
   transition: all 0.5s ease;
-
+  max-width: 25rem;
+  min-height: 12rem;
   border: 1px solid #b2beb5;
 }
 .card-dealer:hover {
-  transform: scale(0.9);
+  transform: scale(0.97);
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Media query */
+
+@media screen and (max-width: 768px) {
+  .card-dealer {
+    width: 100% !important;
+    flex-direction: column;
+    min-height: auto;
+  }
+  .card-dealer img {
+    width: 100% !important;
+    max-height: 15rem;
+    object-fit: cover;
+  }
 }
