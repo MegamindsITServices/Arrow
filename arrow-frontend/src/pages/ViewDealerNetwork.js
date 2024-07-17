@@ -83,9 +83,11 @@ const ViewDealerNetwork = () => {
             </select>
           </div>
         </div>
-        <h1 className="d-flex justify-content-center mt-4">Arrow Executives</h1>
+        <h1 className="d-flex justify-content-center mt-4 mb-4">
+          Arrow Executives
+        </h1>
         {loading ? (
-          <p>Loading...</p>
+          <p className="text-center fs-3 mt-5">Loading...</p>
         ) : dealerNetwork.length === 0 ? (
           <p className="d-flex justify-content-center">
             No dealers found for the selected state.
@@ -95,18 +97,24 @@ const ViewDealerNetwork = () => {
             {/* //   <li key={dealer._id}>
             //     {dealer.dealername} - {dealer.location}
             //   </li> */}
-            <div className="row row-cols-1 row-cols-md-3">
+            <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 pe-5">
               {dealerNetwork.map((dealer) => (
-                <div className="col mb-4" key={dealer._id}>
+                <div
+                  className="col mb-4"
+                  style={{
+                    maxWidth: "600px",
+                  }}
+                  key={dealer._id}
+                >
                   <div className="card-dealer ms-2 mb-2">
                     <img
                       src={`/api/v1/dealer/get-photo/${selectedState}`}
                       className="card-img-top-product"
                       alt={dealerNetwork.personname}
-                      style={{ width: "170px", height: "auto" }}
+                      style={{ width: "150px", height: "auto" }}
                     />
-                    <div className="card-body">
-                      <div className="card-name-price">
+                    <div className="card-body" style={{ overflow: "hidden" }}>
+                      <div className="ps-3 pe-1">
                         <h5 className="card-title-product">
                           Name : {dealer.dealername}
                         </h5>
