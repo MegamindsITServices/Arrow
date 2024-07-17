@@ -84,7 +84,10 @@ const ViewDealerNetwork = () => {
           </div>
         </div>
         <h1 className="d-flex justify-content-center mt-4 mb-4">
-          Arrow Executives
+          Arrow Executives :{" "}
+          <span className="ms-2">
+            {states.find((s) => s._id === selectedState)?.state}
+          </span>
         </h1>
         {loading ? (
           <p className="text-center fs-3 mt-5">Loading...</p>
@@ -97,16 +100,13 @@ const ViewDealerNetwork = () => {
             {/* //   <li key={dealer._id}>
             //     {dealer.dealername} - {dealer.location}
             //   </li> */}
-            <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 pe-5">
+            <div className="row row-cols-1 row-cols-md-2 g-4 row-cols-lg-3 pe-5">
               {dealerNetwork.map((dealer) => (
                 <div
-                  className="col mb-4"
-                  style={{
-                    maxWidth: "600px",
-                  }}
+                  className="col"
                   key={dealer._id}
                 >
-                  <div className="card-dealer ms-2 mb-2">
+                  <div className="card-dealer ms-2">
                     <img
                       src={`/api/v1/dealer/dealer-photo/${dealer?._id}`}
                       className="card-img-top-product"
