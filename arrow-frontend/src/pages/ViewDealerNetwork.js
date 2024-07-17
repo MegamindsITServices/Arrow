@@ -108,7 +108,7 @@ const ViewDealerNetwork = () => {
                 >
                   <div className="card-dealer ms-2 mb-2">
                     <img
-                      src={`/api/v1/dealer/get-photo/${selectedState}`}
+                      src={`/api/v1/dealer/dealer-photo/${dealer?._id}`}
                       className="card-img-top-product"
                       alt={dealerNetwork.personname}
                       style={{ width: "150px", height: "auto" }}
