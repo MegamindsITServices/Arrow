@@ -77,7 +77,8 @@
 .something-learn {
   margin-top: 27px;
   font-size: 48px;
-  color: white;
+  /* color: rgb(214, 210, 210); */
+  mix-blend-mode: difference;
   flex-direction: column;
   font-family: "Segoe UI";
   font-style: normal;
@@ -137,8 +138,8 @@
 }
 .intro-excerpt1 {
   display: block;
-  margin-bottom: 25%;
-  margin-left: 50px;
+  margin-bottom: 20%;
+  margin-left: 0px;
 }
 .first-mobile {
   display: none;
@@ -376,7 +377,7 @@
   }
   .first-mobile {
     display: block;
-    margin-left: 10%;
+    margin-left: 0;
     margin-bottom: 15%;
   }
   .subscribe::before {
