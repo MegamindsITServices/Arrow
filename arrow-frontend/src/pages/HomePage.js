@@ -27,15 +27,14 @@ const HomePage = () => {
   const [banners, setBanners] = useState([]);
   const [getHomeBook, setGetHomeBook] = useState([]);
 
-  
   const increaseVisitorCount = async () => {
-    await axios.get("/api/visitor-count");
+    await axios.get("/api/v1/visitor-count");
   };
 
   useEffect(() => {
     increaseVisitorCount();
   }, []);
-  
+
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1180 },
@@ -108,128 +107,6 @@ const HomePage = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Helmet>
       <Layout title={"Home - Arrow Publication Pvt. Ltd."}>
-        {/* <div
-          id="carouselExampleAutoplaying"
-          className="carousel slide"
-          data-bs-ride="carousel"
-          data-bs-interval="4000" 
-        >
-          <div className="carousel-inner">
-            {banners.map((banner, index) => (
-              <div key={index}>
-                <div className="carousel-item active">
-                  <img
-                    src={`/api/v1/banner/get-first-banner-image/banner`}
-                    alt={banner.title}
-                    className="d-block w-100"
-                  />
-                  <div className="carousel-caption text-start">
-                    <div className="intro-excerpt1">
-                      <div className="first-line">
-                        <h1>
-                          <span className="learn">Learn</span>
-                        </h1>
-                        <p className="something-learn text-white">Something</p>
-                      </div>
-                      <div className="second-line">
-                        <span className="d-block something-learn text-white">
-                          New
-                        </span>
-                        <h1>
-                          <span className="learn ms-3">Every Day</span>
-                        </h1>
-                      </div>
-                    </div>
-                    <div>
-                      <p className="first-mobile">
-                        <b className="learn-mobile">Learn</b>
-                        <span className="ms-1">Something</span> <br /> New{" "}
-                        <b className="everyday-mobile">Every Day</b>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-
-            {banners.map((b, index) => (
-              <div key={index}>
-                <div className="carousel-item custom-carousel">
-                  <img
-                    src={`/api/v1/banner/get-second-banner-image/banner`}
-                    className="d-block w-100"
-                    alt={b.title}
-                  />
-                  <div className="carousel-caption text-start">
-                    <div className="intro-exc">
-                      <h3 className="heading1">
-                        <b className="orange">Learn</b>
-                        <span className="black ms-1">
-                          Something
-                        </span> <br /> <span className="black">new</span>{" "}
-                        <b className="orange">Everyday</b>
-                      </h3>
-                      <p className="heading1-mobile">
-                        <b className="learn-mobile">Learn</b>
-                        <span className="ms-1">Something</span> <br /> New{" "}
-                        <b className="everyday-mobile">Every Day</b>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-
-            {banners.map((banner, index) => (
-              <div key={index}>
-                <div className="carousel-item custom-carousel">
-                  <img
-                    src={`/api/v1/banner/get-third-banner-image/banner`}
-                    className="d-block w-100"
-                    alt={banner.title}
-                  />
-                  <div className="carousel-caption text-start">
-                    <div className="intro-exc">
-                      <h1 className="heading1">
-                        <b className="orange">Learn</b>
-                        <span className="black ms-1">
-                          Something
-                        </span> <br /> <span className="black">New</span>{" "}
-                        <b className="orange">Everyday</b>
-                      </h1>
-                      <p className="heading1-mobile">
-                        <b className="learn-mobile">Learn</b>
-                        <span className="ms-1">Something</span> <br /> New{" "}
-                        <b className="everyday-mobile">Every Day</b>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div>
-            <button
-              className="carousel-control-prev"
-              type="button"
-              data-bs-target="#carouselExampleAutoplaying"
-              data-bs-slide="prev"
-            >
-              <span className="carousel-control-prev-icon" aria-hidden="true" />
-              <span className="visually-hidden">Previous</span>
-            </button>
-            <button
-              className="carousel-control-next"
-              type="button"
-              data-bs-target="#carouselExampleAutoplaying"
-              data-bs-slide="next"
-            >
-              <span className="carousel-control-next-icon" aria-hidden="true" />
-              <span className="visually-hidden">Next</span>
-            </button>
-          </div>
-        </div> */}
         <div
           id="carouselExampleAutoplaying"
           className="carousel slide"
@@ -243,7 +120,7 @@ const HomePage = () => {
                 className={`carousel-item ${index === 0 ? "active" : ""}`}
               >
                 <img
-                  src={`/api/v1/banner/get-first-banner-image/banner`}
+                  src={`/api/v1/banner/get-banner-image/${banner._id}`}
                   alt={banner.title}
                   className="d-block w-100"
                   style={{ width: "100%", height: "auto" }} // Set fixed dimensions
@@ -254,12 +131,10 @@ const HomePage = () => {
                       <h1>
                         <span className="learn">Learn</span>
                       </h1>
-                      <p className="something-learn text-white">Something</p>
+                      <p className="something-learn ">Something</p>
                     </div>
                     <div className="second-line">
-                      <span className="d-block something-learn text-white">
-                        New
-                      </span>
+                      <span className="d-block something-learn ">New</span>
                       <h1>
                         <span className="learn ms-3">Every Day</span>
                       </h1>
@@ -268,7 +143,10 @@ const HomePage = () => {
                   <div>
                     <p className="first-mobile">
                       <b className="learn-mobile">Learn</b>
-                      <span className="ms-1">Something</span> <br /> New{" "}
+                      <span className="ms-1 something-learn">
+                        Something
+                      </span>{" "}
+                      <br /> <span className="something-learn">New</span>{" "}
                       <b className="everyday-mobile">Every Day</b>
                     </p>
                   </div>
@@ -276,7 +154,7 @@ const HomePage = () => {
               </div>
             ))}
 
-            {banners.map((b, index) => (
+            {/* {banners.map((b, index) => (
               <div key={index} className="carousel-item custom-carousel">
                 <img
                   src={`/api/v1/banner/get-second-banner-image/banner`}
@@ -300,9 +178,9 @@ const HomePage = () => {
                   </div>
                 </div>
               </div>
-            ))}
+            ))} */}
 
-            {banners.map((banner, index) => (
+            {/* {banners.map((banner, index) => (
               <div key={index} className="carousel-item custom-carousel">
                 <img
                   src={`/api/v1/banner/get-third-banner-image/banner`}
@@ -326,7 +204,7 @@ const HomePage = () => {
                   </div>
                 </div>
               </div>
-            ))}
+            ))} */}
           </div>
 
           <div>
