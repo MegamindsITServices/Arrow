@@ -5,42 +5,30 @@ import fs from "fs";
 export const CreateBannerController = async (req, res) => {
   try {
     let { title } = req.fields || {};
-    const { photo, secondphoto, thirdphoto } = req.files;
+    const { photo } = req.files;
     title = title || "Banner";
     const slug = slugify(title, { lower: true });
-    switch (true) {
-      case !title:
-        return res.status(500).send({ error: "Title is required" });
-      case photo && photo.size > 1000000:
-        return res
-          .status(500)
-          .send({ error: "Photo is required & it should be less than 2MB" });
-      case secondphoto && secondphoto.size > 1000000:
-        return res
-          .status(500)
-          .send({ error: "Front Photo is required & it should be" });
 
-      case thirdphoto && thirdphoto.size > 1000000:
-        return res
-          .status(500)
-          .send({ error: "Back Photo is required & it should be" });
+    // Validation checks
+    if (!title) {
+      return res.status(500).send({ error: "Title is required" });
     }
+    if (photo && photo.size > 2000000) {
+      return res.status(500).send({ error: "Photo should be less than 2MB" });
+    }
+
+    // Create banner object
     const banner = new bannerModel({
       title,
       slug,
     });
-    // Process each photo
+
+    // Process photo
     if (photo) {
-      banner.photo.data = fs.readFileSync(photo.path);
-      banner.photo.contentType = photo.type;
-    }
-    if (secondphoto) {
-      banner.secondphoto.data = fs.readFileSync(secondphoto.path);
-      banner.secondphoto.contentType = secondphoto.type;
-    }
-    if (thirdphoto) {
-      banner.thirdphoto.data = fs.readFileSync(thirdphoto.path);
-      banner.thirdphoto.contentType = thirdphoto.type;
+      banner.photo = {
+        data: fs.readFileSync(photo.path),
+        contentType: photo.type,
+      };
     }
 
     // Save the banner object to the database
@@ -87,45 +75,40 @@ export const getBannerController = async (req, res) => {
 export const updateBannerController = async (req, res) => {
   try {
     let { title } = req.fields;
-    const { photo } = req.files;
-    const { secondphoto } = req.files;
-    const { thirdphoto } = req.files;
+    const photo = req.files.photo; // Expecting a single photo
     title = title || "Banner";
+    const slug = slugify(title, { lower: true });
 
-    switch (true) {
-      case !title:
-        return res.status(500).send({ error: "Title is Required" });
-      case photo && photo.size > 1000000:
-        return res.status(500).send({
-          error: "First Photo is required & it should be less than 2MB",
-        });
-
-      case secondphoto && secondphoto.size > 1000000:
-        return res
-          .status(500)
-          .send({ error: "Second Photo is required & it should be" });
-
-          case thirdphoto && thirdphoto.size > 1000000: // Correct the error message
-          return res.status(500).send({
-            error: "Third Photo is required & it should be less than 2MB",
-          });
+    if (!title) {
+      return res.status(500).send({ error: "Title is required" });
     }
-    const banner = await bannerModel.findOneAndUpdate(
-      { slug: req.params.slug }, // Filter object
-      { ...req.fields, slug: slugify(title, { lower: true }) },
-      { new: true }
-    );
+
+    // Validate photo size
+    if (photo && photo.size > 2000000) {
+      return res.status(500).send({
+        error: "Photo should be less than 2MB",
+      });
+    }
+
+    let banner = await bannerModel.findById(req.params.id);
+
+    if (!banner) {
+      return res.status(404).send({
+        success: false,
+        message: "Banner not found",
+      });
+    }
+
+    // Update banner fields
+    banner.title = title;
+    banner.slug = slug;
+
+    // Handle photo
     if (photo) {
-      banner.photo.data = fs.readFileSync(photo.path);
-      banner.photo.contentType = photo.type;
-    }
-    if (secondphoto) {
-      banner.secondphoto.data = fs.readFileSync(secondphoto.path);
-      banner.secondphoto.contentType = secondphoto.type;
-    }
-    if (thirdphoto) {
-      banner.thirdphoto.data = fs.readFileSync(thirdphoto.path);
-      banner.thirdphoto.contentType = thirdphoto.type;
+      banner.photo = {
+        data: fs.readFileSync(photo.path),
+        contentType: photo.type,
+      };
     }
 
     await banner.save();
@@ -139,18 +122,14 @@ export const updateBannerController = async (req, res) => {
     res.status(500).send({
       success: false,
       error,
-      message: "Error in Update banner",
+      message: "Error in updating banner",
     });
   }
 };
 
 export const deleteBannerController = async (req, res) => {
   try {
-    await bannerModel
-      .findByIdAndDelete({ _id: req.params.pid })
-      .select("-firstbannerphoto")
-      .select("-secondbannerphoto")
-      .select("-thirdbannerphoto");
+    await bannerModel.findByIdAndDelete({ _id: req.params.pid });
     res.status(200).send({
       success: true,
       message: " banner Deleted Successfully",
@@ -164,10 +143,10 @@ export const deleteBannerController = async (req, res) => {
     });
   }
 };
-export const getFirstBannerImageController = async (req, res) => {
+export const getBannerImageController = async (req, res) => {
   try {
     const banner = await bannerModel
-      .findOne({ slug: req.params.slug })
+      .findOne({ _id: req.params.id })
       .select("photo");
     if (banner && banner.photo && banner.photo.data) {
       res.set("Content-Type", banner.photo.contentType);
@@ -188,56 +167,9 @@ export const getFirstBannerImageController = async (req, res) => {
   }
 };
 
-export const getSecondBannerImageController = async (req, res) => {
-  try {
-    const banner = await bannerModel
-      .findOne({ slug: req.params.slug })
-      .select("secondphoto");
-    if (banner && banner.secondphoto && banner.secondphoto.data) {
-      res.set("Content-Type", banner.secondphoto.contentType);
-      return res.status(200).send(banner.secondphoto.data);
-    } else {
-      return res.status(404).send({
-        success: false,
-        message: "Banner not found",
-      });
-    }
-  } catch (error) {
-    console.log(error);
-    res.status(500).send({
-      success: false,
-      error,
-      message: "Error to get banner photo",
-    });
-  }
-};
-
-export const getThirdBannerImageController = async (req, res) => {
-  try {
-    const banner = await bannerModel
-      .findOne({ slug: req.params.slug })
-      .select("thirdphoto");
-    if (banner && banner.thirdphoto && banner.thirdphoto.data) {
-      res.set("Content-Type", banner.thirdphoto.contentType);
-      return res.status(200).send(banner.thirdphoto.data);
-    } else {
-      return res.status(404).send({
-        success: false,
-        message: "Banner not found",
-      });
-    }
-  } catch (error) {
-    console.log(error);
-    res.status(500).send({
-      success: false,
-      error,
-      message: "Error to get banner photo",
-    });
-  }
-};
 export const getSingleBannerController = async (req, res) => {
   try {
-    const banner = await bannerModel.findOne({ slug: req.params.slug });
+    const banner = await bannerModel.findOne({ _id: req.params.id });
     if (!banner) {
       return res.status(404).send({
         success: false,
