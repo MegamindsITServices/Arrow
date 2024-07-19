@@ -5,14 +5,6 @@ const bannerSchema = new mongoose.Schema(
       data: Buffer,
       contentType: String,
     },
-    secondphoto: {
-      data: Buffer,
-      contentType: String,
-    },
-    thirdphoto: {
-      data: Buffer,
-      contentType: String,
-    },
     title: {
       type: String,
       required: false,
