@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import AdminMenu from "../../components/Layout/AdminMenu";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../../styles/banner.css";
-import { getConfig } from "../../utils/request";
 import toast from "react-hot-toast";
 import swal from "sweetalert";
 
 const ViewBanner = () => {
   const [banners, setBanners] = useState([]);
-  const [index, setIndex] = useState(0);
+  const [title, setTitle] = useState("");
+  const [photo, setPhoto] = useState(null);
+  const [bannerId, setBannerId] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [previousPhoto, setPreviousPhoto] = useState(null);
   const navigate = useNavigate();
-  const handleSelect = (selectedIndex) => {
-    setIndex(selectedIndex);
-  };
+
   const getAllBanners = async () => {
     try {
       const { data } = await axios.get("/api/v1/banner/get-banner");
@@ -23,26 +24,76 @@ const ViewBanner = () => {
       console.log(error);
     }
   };
+
   useEffect(() => {
     getAllBanners();
   }, []);
 
-  //delete banner
-  const handleDelete = async (pid) => {
+  const handleDelete = async (bannerId) => {
     try {
-      await getConfig();
       const { data } = await axios.delete(
-        `/api/v1/banner/delete-banner/${pid}`
+        `/api/v1/banner/delete-banner/${bannerId}`
       );
       if (data.success) {
-        swal("SuccessFull", "banner deleted successfully", "success");
-        navigate("/dashboard/admin/dashboard");
+        swal("Successful", "Banner deleted successfully", "success");
+        getAllBanners(); // Refresh banners list
       }
     } catch (error) {
       toast.error("Something went wrong");
       console.log(error);
     }
   };
+
+  const handleEdit = async (banner) => {
+    setTitle(banner.title);
+    setPhoto(null);
+    setPreviousPhoto(banner._id); // Set the previous photo's ID for display
+    setBannerId(banner._id);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handlePhotoChange = (e) => {
+    setPhoto(e.target.files[0]);
+  };
+
+  const handleSubmit = async () => {
+    setLoading(true);
+    const formData = new FormData();
+    formData.append("title", title);
+    if (photo) {
+      formData.append("photo", photo);
+    }
+
+    try {
+      if (bannerId) {
+        await axios.put(`/api/v1/banner/update-banner/${bannerId}`, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        toast.success("Banner updated successfully");
+        window.location.reload();
+      } else {
+        await axios.post("/api/v1/banner/create-banner", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        toast.success("Banner created successfully");
+      }
+      getAllBanners();
+      setTitle("");
+      setPhoto(null);
+      setPreviousPhoto(null);
+      setBannerId(null);
+    } catch (error) {
+      toast.error("Something went wrong");
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <Layout>
       <div className="container-fluid m-3 p-3">
@@ -50,38 +101,84 @@ const ViewBanner = () => {
           <div className="col-md-3">
             <AdminMenu />
           </div>
-          <div className="col-md-9">
-            <h1 className="d-flex justify-content-center">Update Banners</h1>
+          <div className="col-md-9 w-md-75">
+            <h1 className="d-flex justify-content-center">Manage Banners</h1>
+            {/* <div className="mb-3 col-md-8">
+              <input
+                type="text"
+                value={title}
+                placeholder="Banner Title"
+                className="form-control form border "
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            </div> */}
+            <div className="mb-3 ">
+              {bannerId ? <h4>Update Banner</h4> : <h4>Create a new Banner</h4>}
+
+              <label className="upload-img col-md-8">
+                {photo ? photo.name : "Upload Banner Photo"}
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handlePhotoChange}
+                  hidden
+                />
+              </label>
+              {photo ? (
+                <div className="text-left my-4 col-md-8">
+                  <img
+                    src={URL.createObjectURL(photo)}
+                    alt="banner"
+                    height={"200px"}
+                    className="img img-responsive"
+                  />
+                </div>
+              ) : previousPhoto ? (
+                <div className="text-left my-4 col-md-8">
+                  <img
+                    src={`/api/v1/banner/get-banner-image/${previousPhoto}`}
+                    alt="banner"
+                    height={"200px"}
+                    className="img img-responsive"
+                  />
+                </div>
+              ) : null}
+            </div>
+            <div className="mt-4 mb-4">
+              <button
+                disabled={loading}
+                className="Butn"
+                onClick={handleSubmit}
+              >
+                {loading
+                  ? "Submitting..."
+                  : bannerId
+                  ? "Update Banner"
+                  : "Create Banner"}
+              </button>
+            </div>
+            <h2 className="my-5">Existing Banners</h2>
             {banners.map((banner, index) => (
-              <div key={index}>
+              <div key={index} className="d-sm-flex mb-5">
                 <img
-                  src={`/api/v1/banner/get-first-banner-image/banner`}
+                  src={`/api/v1/banner/get-banner-image/${banner._id}`}
                   alt={banner.title}
                   className="banner-img"
                 />
-
-                {/* <img
-                    src={`/api/v1/banner/get-second-banner-image/${banner.slug}`}
-                    alt={banner.title}
-                    className="banner-img"
-                  />
-
-                  <img
-                    src={`/api/v1/banner/get-third-banner-image/${banner.slug}`}
-                    alt={banner.title}
-                    className="banner-img"
-                  /> */}
-
-                <button
-                  className="Butn mb-4 ms-4"
-                  onClick={() => handleDelete(banner._id)}
-                >
-                  {" "}
-                  Delete
-                </button>
-                <Link to={`/dashboard/admin/banner/${banner.slug}`}>
-                  <button className="Butn mb-4 ms-4"> Edit</button>
-                </Link>
+                <div className="pt-3 pt-md-0 ps-md-5">
+                  <button
+                    className="Butn mb-4  h-10"
+                    onClick={() => handleDelete(banner._id)}
+                  >
+                    Delete
+                  </button>
+                  <button
+                    className="Butn mb-4 ms-4"
+                    onClick={() => handleEdit(banner)}
+                  >
+                    Edit
+                  </button>
+                </div>
               </div>
             ))}
           </div>
