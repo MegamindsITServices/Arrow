@@ -30,3 +30,11 @@
     object-fit: cover;
   }
 }
+
+.upload-img {
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  border: 2px dashed #e0731d;
+  background-color: white;
+}
