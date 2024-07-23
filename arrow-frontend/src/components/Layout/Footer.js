@@ -80,7 +80,35 @@ const Footer = () => {
                   </div>
                 </div>
               </div>
-
+  <div className="col-md-3">
+                <div className="useful-link">
+                  <div className="use-links">
+                    <li>
+                      <Link to="/privacy-policy">
+                        <i className="fa-solid fa-angles-right" /> Privacy
+                        Policy
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/refund-policy">
+                        <i className="fa-solid fa-angles-right" /> Refund Policy
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/shipping-and-return-policy">
+                        <i className="fa-solid fa-angles-right" />
+                        Shipping & Return Policy
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/terms-and-conditions">
+                        <i className="fa-solid fa-angles-right" />
+                        Terms and Conditions
+                      </Link>
+                    </li>
+                  </div>
+                </div>
+              </div>
               <div className="col-md-3">
                 <div className="useful-link">
                   <h2 className="pay-online">Pay Online</h2>
