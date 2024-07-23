@@ -9,7 +9,7 @@ const PrivacyPolicy = () => {
           <div className="container">
             <h1 className="heading text-center">Privacy Policy</h1>
           </div>
-          <div className="my-5 fs-6">
+          <div className="my-5">
             <h4 style={{ color: "#d56742" }}>Basic Exposure Of Our Policy</h4>
             <p>
               Thanks for visiting our privacy policy for your better insight
@@ -18,7 +18,7 @@ const PrivacyPolicy = () => {
               and transaction details, residential address etc
             </p>
           </div>
-          <div className="my-5 fs-6">
+          <div className="my-5">
             <h4 style={{ color: "#d56742" }}>If you Register With Us</h4>
             <p>
               We protect this information for your better admittance in our
@@ -46,7 +46,7 @@ const PrivacyPolicy = () => {
               </li>
             </ul>
           </div>
-          <div className="my-5 fs-6">
+          <div className="my-5">
             <h4 style={{ color: "#d56742" }}>For Your Detail</h4>
             <p>
               We also collect some impersonal info of following from the third
@@ -63,7 +63,7 @@ const PrivacyPolicy = () => {
               <li style={{ listStyleType: "initial !important" }}>Browser</li>
             </ul>
           </div>
-          <div className="my-5 fs-6">
+          <div className="my-5">
             <h4 style={{ color: "#d56742" }}>Hope You Won’t Face This</h4>
             <p>
               If you won’t give your proper details then we can’t bid our
@@ -71,7 +71,7 @@ const PrivacyPolicy = () => {
               transactions.
             </p>
           </div>{" "}
-          <div className="my-5 fs-6">
+          <div className="my-5">
             <h4 style={{ color: "#d56742" }}>
               Confidentiality For Your Credentials
             </h4>
@@ -92,7 +92,7 @@ const PrivacyPolicy = () => {
               </li>
             </ul>
           </div>
-          <div className="my-5 fs-6">
+          <div className="my-5">
             <h4 style={{ color: "#d56742" }}>
               Areas Shared With Your Credentials
             </h4>
