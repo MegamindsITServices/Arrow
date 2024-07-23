@@ -56,6 +56,10 @@ import ScrollToTopButton from "./components/ScrollToTopButton";
 import NewReleaseBook from "./pages/Admin/NewReleaseBook";
 import ViewNewRelease from "./pages/Admin/ViewNewRelease";
 import UpdateDealer from "./pages/Admin/UpdateDealer";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsConditions from "./pages/TermsConditions";
+import SRPolicy from "./pages/SRPolicy";
+import RefundPolicy from "./pages/RefundPolicy";
 // import OwnerRoute from "./components/Routes/OwnerRoutes";
 // import OwnerDashboard from "./pages/Owners/OwnerDashboard";
 
@@ -133,6 +137,10 @@ function App() {
         <Route path="/shop" element={<Shop />} />
         <Route path="/view-dealer-network" element={<ViewDealerNetwork />} />
         <Route path="/Contact" element={<Contact />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-and-conditions" element={<TermsConditions />} />
+        <Route path="/shipping-and-return-policy" element={<SRPolicy />} />
+        <Route path="/refund-policy" element={<RefundPolicy />} />
 
         <Route path="/*" element={<Pagenotfound />} />
         <Route path="/signup" element={<Register />} />
