@@ -10,7 +10,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   gap: 0;
   border: 5px solid #d56742;
   border-radius: 50%;
@@ -92,7 +91,7 @@ li {
 }
 .use-links {
   line-height: 32px;
-  margin-left: 40px;
+  /* margin-left: 40px; */
 }
 .use-links li i {
   font-size: 14px;
