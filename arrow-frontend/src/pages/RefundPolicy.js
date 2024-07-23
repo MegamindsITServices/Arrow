@@ -10,7 +10,7 @@ const RefundPolicy = () => {
           <div className="container">
             <h1 className="heading text-center">Refund Policy</h1>
           </div>
-          <div className="my-5 fs-6">
+          <div className="my-5">
             <p>
               <strong> Hi !!!</strong>
               <br />
@@ -25,7 +25,7 @@ const RefundPolicy = () => {
               product (including shipping charges)
             </p>
           </div>
-          <div className="my-5 fs-6">
+          <div className="my-5">
             <h4 style={{ color: "#d56742" }}>Replacement</h4>
             <p>
               Our shipments are cautiously checked before leaving our premises.
@@ -49,7 +49,7 @@ const RefundPolicy = () => {
               of receipt , if in case of above cases.
             </p>
           </div>
-          <div className="my-5 fs-6">
+          <div className="my-5">
             <h4 className="text-danger">Make A Note</h4>
             <p>
               We will not refund your amount paid for a product in following
