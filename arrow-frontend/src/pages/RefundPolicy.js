@@ -24,6 +24,7 @@ const RefundPolicy = () => {
               condition, then we will refund the total charge of the un-serviced
               product (including shipping charges)
             </p>
+                <p> The refund will be processed within 5 to 7 Days to your source account. </p>
           </div>
           <div className="my-5">
             <h4 style={{ color: "#d56742" }}>Replacement</h4>
