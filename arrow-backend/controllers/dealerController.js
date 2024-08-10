@@ -4,8 +4,16 @@ import mongoose from "mongoose";
 // create a dealer
 export const createDealerController = async (req, res) => {
   try {
-    const { dealername, address, area, designation, phone, state, email } =
-      req.fields;
+    const {
+      dealername,
+      address,
+      area,
+      designation,
+      phone,
+      state,
+      email,
+      rank,
+    } = req.fields;
     const { photo } = req.files;
 
     switch (true) {
@@ -38,6 +46,7 @@ export const createDealerController = async (req, res) => {
       email,
       state,
       phone,
+      rank,
     });
     await Dealer.save();
     if (photo) {
@@ -84,7 +93,9 @@ export const getSingleDealerController = async (req, res) => {
 // get all dealers
 export const getAllDealerController = async (req, res) => {
   try {
-    const dealer = await DealerModel.find();
+    const dealer = await DealerModel.find().sort({
+      rank: 1,
+    });
     res.status(200).json(dealer);
   } catch (error) {
     console.error(error);
@@ -114,9 +125,9 @@ export const deleteDealerController = async (req, res) => {
 //update controller
 export const updateDealerController = async (req, res) => {
   try {
-    const { dealername, address, area, designation, phone, email } = req.fields;
+    const { dealername, address, area, designation, phone, email, rank } =
+      req.fields;
     const { photo } = req.files;
-    console.log("ARea: ", photo);
     const { id } = req.params;
     let updateDealer = await DealerModel.findByIdAndUpdate(
       id,
@@ -127,6 +138,7 @@ export const updateDealerController = async (req, res) => {
         area,
         phone,
         email,
+        rank,
       },
       { new: true }
     );
@@ -156,12 +168,10 @@ export const getSelectedStateDealerController = async (req, res) => {
   try {
     const { state } = req.params;
 
-    console.log("State Parameter:", state);
     const stateObjectId = mongoose.Types.ObjectId(state);
-    const dealers = await DealerModel.find({ state: stateObjectId }).populate(
-      "state"
-    );
-    console.log("Fetched Dealers:", dealers);
+    const dealers = await DealerModel.find({ state: stateObjectId })
+      .populate("state")
+      .sort({ rank: 1 });
     res.status(200).json(dealers);
   } catch (error) {
     console.error("Error fetching dealer network data:", error);
