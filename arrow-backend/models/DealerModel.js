@@ -33,6 +33,10 @@ const DealerSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+     rank: {
+      type: Number,
+      required: true,
+    },
     photo: {
       data: Buffer,
       contentType: String,
