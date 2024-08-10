@@ -17,6 +17,7 @@ const UpdateDealer = () => {
   const [photo, setPhoto] = useState("");
   const [area, setArea] = useState("");
   const [designation, setDesignation] = useState("");
+  const [rank, setRank] = useState();
 
   const handleUpdate = async (e) => {
     e.preventDefault();
@@ -31,6 +32,7 @@ const UpdateDealer = () => {
 
       formData.append("area", area);
       photo && formData.append("photo", photo);
+      formData.append("rank", rank);
 
       const { data } = await axios.put(
         `/api/v1/dealer/update-dealer/${id}`,
@@ -38,7 +40,6 @@ const UpdateDealer = () => {
       );
       if (data?.success) {
         swal("Congrats", "Post Uploaded SuccessFully", "success");
-        console.log(formData);
       }
     } catch (error) {
       console.log(error);
@@ -55,6 +56,7 @@ const UpdateDealer = () => {
       setDesignation(data?.designation);
       setEmail(data?.email);
       setPhone(data?.phone);
+      setRank(data?.rank);
     } catch (error) {
       toast.error("Failed to get executive data");
     }
@@ -167,6 +169,16 @@ const UpdateDealer = () => {
                       onChange={(e) => setAddress(e.target.value)}
                       className="form-control admin-form"
                       placeholder="Full Address"
+                      required
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <input
+                      type="number"
+                      value={rank}
+                      onChange={(e) => setRank(e.target.value)}
+                      className="form-control admin-form"
+                      placeholder="Enter Rank"
                       required
                     />
                   </div>
