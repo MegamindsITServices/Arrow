@@ -7,7 +7,6 @@ import "../../styles/Viewdealer.css";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import swal from "sweetalert";
-import { getConfig } from "../../utils/request";
 import DealerUpdateForm from "../../components/Form/DealerUpdateForm";
 import axios from "axios";
 const ViewDealers = () => {
@@ -17,30 +16,28 @@ const ViewDealers = () => {
 
   const [selectedDealer, setSelectedDealer] = useState("");
   const [visible, setVisible] = useState(false);
+  const getAllDealers = async () => {
+    try {
+      const res = await axios.get("/api/v1/dealer/get-all-dealer");
+      setGetDealerNetwork(res.data);
+      console.log(res.data);
+    } catch (error) {
+      console.log("error fetching dealers", error);
+    }
+  };
   useEffect(() => {
-    const getAllDealers = async () => {
-      try {
-        await getConfig();
-        const res = await axios.get("/api/v1/dealer/get-all-dealer");
-        setGetDealerNetwork(res.data);
-        console.log(res.data);
-      } catch (error) {
-        console.log("error fetching dealers", error);
-      }
-    };
     getAllDealers();
   }, []);
 
   //delete a dealer
   const handleDelete = async (pId) => {
     try {
-      await getConfig();
       const { data } = await axios.delete(
         `/api/v1/dealer/delete-dealer/${pId}`
       );
       if (data.success) {
         swal("SuccessFull", "Dealer deleted successfully", "success");
-        // getAllDealers();
+        getAllDealers();
       }
     } catch (error) {
       toast.error("Something went wrong");
@@ -51,7 +48,6 @@ const ViewDealers = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      await getConfig();
       const { data } = await axios.put(
         `/api/v1/dealer/update-dealer/${selectedDealer._id}`,
         updateDealer // Send the entire updateDealer object
