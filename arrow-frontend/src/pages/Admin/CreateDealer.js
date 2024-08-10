@@ -20,6 +20,7 @@ const CreateDealer = () => {
   const [area, setArea] = useState("");
   const [designation, setDesignation] = useState("");
   const [state, setState] = useState("");
+  const [rank, setRank] = useState();
 
   const handleCreate = async (e) => {
     e.preventDefault();
@@ -35,6 +36,7 @@ const CreateDealer = () => {
 
       formData.append("area", area);
       formData.append("photo", photo);
+      formData.append("rank", rank);
 
       const { data } = await axios.post(
         "/api/v1/dealer/create-dealer",
@@ -48,6 +50,7 @@ const CreateDealer = () => {
         setDesignation("");
         setEmail("");
         setPhone("");
+        setRank();
       }
     } catch (error) {
       console.log(error);
@@ -87,9 +90,7 @@ const CreateDealer = () => {
 
   const getAllState = async () => {
     try {
-      const response = await axios.get(
-        "/api/v1/dealerstate/get-state"
-      );
+      const response = await axios.get("/api/v1/dealerstate/get-state");
       const data = response.data;
       // console.log("Response data:", data);
       if (data && data.success) {
@@ -230,7 +231,16 @@ const CreateDealer = () => {
                       required
                     />
                   </div>
-
+                  <div className="mb-3">
+                    <input
+                      type="number"
+                      value={rank}
+                      onChange={(e) => setRank(e.target.value)}
+                      className="form-control admin-form"
+                      placeholder="Enter Rank"
+                      required
+                    />
+                  </div>
                   <button type="submit" className="login-button">
                     Submit
                   </button>
