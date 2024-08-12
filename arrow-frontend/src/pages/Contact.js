@@ -110,7 +110,7 @@ const Contact = () => {
           <div className="row justify-content-center align-items-center">
             <div className="col-md-6">
               <div className="">
-                <h4 className="enq">Get in touch</h4>
+                <h4 className="enq">Get in touch!</h4>
                 <div className="executive-search-filter executive-custom-select">
                   <select
                     className="executive-class-filter"
