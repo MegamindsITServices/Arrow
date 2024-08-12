@@ -125,8 +125,16 @@ export const deleteDealerController = async (req, res) => {
 //update controller
 export const updateDealerController = async (req, res) => {
   try {
-    const { dealername, address, area, designation, phone, email, rank } =
-      req.fields;
+    const {
+      dealername,
+      address,
+      area,
+      designation,
+      phone,
+      email,
+      rank,
+      state,
+    } = req.fields;
     const { photo } = req.files;
     const { id } = req.params;
     let updateDealer = await DealerModel.findByIdAndUpdate(
@@ -139,6 +147,7 @@ export const updateDealerController = async (req, res) => {
         phone,
         email,
         rank,
+        state,
       },
       { new: true }
     );
