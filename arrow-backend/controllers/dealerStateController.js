@@ -58,7 +58,7 @@ export const updateDealerStateController = async (req, res) => {
 
 export const getDealerStateController = async (req, res) => {
   try {
-    const dealerState = await dealerStateModel.find({});
+    const dealerState = await dealerStateModel.find({}).sort({ state: 1 });
     res.status(200).send({
       success: true,
       message: "All Dealer states",
