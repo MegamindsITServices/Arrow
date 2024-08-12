@@ -5,11 +5,14 @@ import { useParams } from "react-router-dom";
 import swal from "sweetalert";
 import Layout from "../../components/Layout/Layout";
 import AdminMenu from "../../components/Layout/AdminMenu";
-
+import { Select } from "antd";
+const { Option } = Select;
 const UpdateDealer = () => {
   const { id } = useParams();
   const [dealer, setDealer] = useState();
   const [dealername, setDealername] = useState("");
+  const [states, setStates] = useState([]);
+  const [state, setState] = useState("");
 
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
@@ -33,6 +36,7 @@ const UpdateDealer = () => {
       formData.append("area", area);
       photo && formData.append("photo", photo);
       formData.append("rank", rank);
+      formData.append("state", state);
 
       const { data } = await axios.put(
         `/api/v1/dealer/update-dealer/${id}`,
@@ -57,12 +61,28 @@ const UpdateDealer = () => {
       setEmail(data?.email);
       setPhone(data?.phone);
       setRank(data?.rank);
+      setState(data?.state);
     } catch (error) {
       toast.error("Failed to get executive data");
     }
   };
+
+  const getAllState = async () => {
+    try {
+      const response = await axios.get("/api/v1/dealerstate/get-state");
+      const data = response.data;
+      // console.log("Response data:", data);
+      if (data && data.success) {
+        // console.log("Setting states:", data.dealerState);
+        setStates(data.dealerState);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
     getDealerData();
+    getAllState();
   }, []);
   return (
     <>
@@ -77,6 +97,25 @@ const UpdateDealer = () => {
 
               <div className="mb-3">
                 <form onSubmit={handleUpdate}>
+                  <div className="col-md-8">
+                    <Select
+                      bordered={false}
+                      placeholder="Select State"
+                      size="large"
+                      showSearch
+                      value={state}
+                      className="form-select mb-3"
+                      onChange={(value) => {
+                        setState(value);
+                      }}
+                    >
+                      {states?.map((state) => (
+                        <Option key={state._id} value={state._id}>
+                          {state.state}
+                        </Option>
+                      ))}
+                    </Select>
+                  </div>
                   <div className="mb-3">
                     <label className="Butn col-md-8">
                       {photo ? photo.name : "Upload Photo"}
