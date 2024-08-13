@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { LuDownload } from "react-icons/lu";
 const InstallPWAButton = () => {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     const handleBeforeInstallPrompt = (e) => {
