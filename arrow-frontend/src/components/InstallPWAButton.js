@@ -42,7 +42,8 @@ const InstallPWAButton = () => {
   return (
     <>
       <button onClick={handleInstallClick} className="install-app">
-        <LuDownload />
+        <img src="/logo-new.png" />
+        Download App Here
       </button>
     </>
   );
