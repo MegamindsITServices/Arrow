@@ -73,21 +73,26 @@ input::-webkit-inner-spin-button {
   display: flex;
   gap: 10px;
   align-items: center;
-  border: 1px solid #e0731d;
+  border: none;
+  /* border: 1px solid #e0731d; */
   border-radius: 10px;
-  width: 3rem;
+  width: fit-content;
   height: 3rem;
   justify-content: center;
   padding: 4px 10px;
-  background-color: #e0731d;
-  color: white;
+  color: #e0731d;
+  background-color: white;
   font-weight: bolder;
   position: fixed;
   left: 3rem;
   bottom: 3rem;
   z-index: 40;
   box-shadow: 0 0 10px #e0731d, 0 0 20px #e0731d, 0 0 30px #e0731d;
-  animation: glow 1.5s infinite, bounce 2s infinite;
+  animation: glow 1s ease-in-out infinite, bounce 2s ease-in-out infinite;
+}
+
+.install-app img {
+  width: 2rem;
 }
 
 @keyframes glow {
@@ -106,7 +111,7 @@ input::-webkit-inner-spin-button {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-4px);
   }
 }
 
