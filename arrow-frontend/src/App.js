@@ -62,6 +62,8 @@ import SRPolicy from "./pages/SRPolicy";
 import RefundPolicy from "./pages/RefundPolicy";
 // import OwnerRoute from "./components/Routes/OwnerRoutes";
 // import OwnerDashboard from "./pages/Owners/OwnerDashboard";
+import InstallPWAButton from "./components/InstallPWAButton";
+
 
 function App() {
   return (
@@ -69,6 +71,7 @@ function App() {
       {/* <HashRouter> */}
       <ScrollToTopButton />
       <ScrollToTop />
+      <InstallPWAButton />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<About />} />
