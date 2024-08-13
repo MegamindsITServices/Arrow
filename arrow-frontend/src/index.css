@@ -59,3 +59,64 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+.footer-data {
+  padding: 10px 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.install-app {
+  font-size: 1rem;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  border: 1px solid #e0731d;
+  border-radius: 10px;
+  width: 3rem;
+  height: 3rem;
+  justify-content: center;
+  padding: 4px 10px;
+  background-color: #e0731d;
+  color: white;
+  font-weight: bolder;
+  position: fixed;
+  left: 3rem;
+  bottom: 3rem;
+  z-index: 40;
+  box-shadow: 0 0 10px #e0731d, 0 0 20px #e0731d, 0 0 30px #e0731d;
+  animation: glow 1.5s infinite, bounce 2s infinite;
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 1px #e0731d, 0 0 5px #e0731d, 0 0 30px #e0731d;
+  }
+  50% {
+    box-shadow: 0 0 1px #e0731d, 0 0 5px #e0731d, 0 0 40px #e0731d;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (max-width: 768px) {
+  .install-app {
+    left: 1rem;
+    bottom: 1rem;
+  }
+  .scroll-to-top {
+    right: 1rem !important;
+    bottom: 1.3rem !important;
+  }
+}
