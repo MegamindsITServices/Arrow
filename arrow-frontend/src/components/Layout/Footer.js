@@ -10,12 +10,13 @@ import "../../styles/style.css";
 import "../../styles/footer.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import InstallPWAButton from "../InstallPWAButton";
 
 const Footer = () => {
   const [visitors, setVisitor] = useState();
 
   const getVisitors = async () => {
-    const { data } = await axios.get("/api/visitors");
+    const { data } = await axios.get("http://localhost:8080/api/v1/visitors");
     setVisitor(data.visitors);
   };
 
@@ -27,10 +28,10 @@ const Footer = () => {
     <>
       <div className="font">
         <footer id="footer">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-3">
-                <a href="index.html">
+          <div className="w-full mx-auto">
+            <div className="row mx-auto justify-self-center">
+              <div className="col-md col-sm-3">
+                <a href="/">
                   <h4 className="arrow-footer">
                     <b>Arrow Publications Pvt. Ltd.</b>
                   </h4>
@@ -50,7 +51,7 @@ const Footer = () => {
                   />
                 </h4> */}
               </div>
-              <div className="col-md-3">
+              <div className="col-md col-sm-3">
                 <div className="useful-link">
                   <h2 className="quick">Quick Links</h2>
 
@@ -80,7 +81,7 @@ const Footer = () => {
                   </div>
                 </div>
               </div>
-  <div className="col-md-3">
+              <div className="col-md col-sm-3">
                 <div className="useful-link">
                   <div className="use-links">
                     <li>
@@ -109,7 +110,8 @@ const Footer = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-md-3">
+
+              <div className="col-md col-sm-3">
                 <div className="useful-link">
                   <h2 className="pay-online">Pay Online</h2>
 
@@ -120,7 +122,7 @@ const Footer = () => {
                   />
                 </div>
               </div>
-              <div className="col-md-3">
+              <div className="col col-md-3 mx-auto useful-link">
                 <div className="visit-counter">
                   <p className="visit">{visitors}</p>
                   <p>Visitors</p>
