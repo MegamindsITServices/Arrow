@@ -124,12 +124,12 @@ const siteViewsUp = async () => {
 };
 
 
-app.get("/api/visitor-count", async (req, res) => {
+app.get("/api/v1/visitor-count", async (req, res) => {
   await siteViewsUp();
   return res.json({ success: true });
 });
 
-app.get("/api/visitors", async (req, res) => {
+app.get("/api/v1/visitors", async (req, res) => {
   const visitor = await Visitor.findOne();
   res.json({
     visitors: visitor.counter,
