@@ -37,6 +37,8 @@ const app = express();
 // });
 
 const allowedOrigins = [
+ "https://www.arrowpublications.in/#",
+ "https://www.arrowpublications.in",
  "https://arrowpublications.in",
    "https://arrowpublications.in/",
   "http://localhost:8080",
