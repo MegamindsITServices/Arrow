@@ -107,7 +107,7 @@ router.post("/payment/status", async (req, res) => {
           await createOrder();
           res.redirect("https://arrowpublications.in/#/dashboard/user/orders");
         } else {
-          res.send(response.data);
+           res.send("Payment Failed!!");
         }
       })
       .catch(function (error) {
