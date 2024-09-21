@@ -37,6 +37,7 @@ const app = express();
 // });
 
 const allowedOrigins = [
+ "https://mercury-t2.phonepe.com",
  "https://www.arrowpublications.in/#",
  "https://www.arrowpublications.in",
  "https://arrowpublications.in",
