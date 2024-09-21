@@ -16,7 +16,7 @@ import HomeBookRoute from "./routes/homeBookRoute.js";
 import dealerStateRoute from "./routes/dealerStateRoute.js";
 import newReleaseRoutes from "./routes/newReleaseRoutes.js";
 import mongoose from "mongoose";
-
+import paymentsRoutes from "./routes/paymentRoutes.js";
 import path from "path";
 //Configure env
 dotenv.config();
@@ -97,7 +97,7 @@ app.use("/api/v1/bookphoto", HomeBookRoute);
 app.use("/api/v1/new-release", newReleaseRoutes);
 
 app.use("/api/v1/dealerstate", dealerStateRoute);
-
+app.use("/api/v1", paymentsRoutes);
 //rest api
 
 const visitorSchema = new mongoose.Schema({
