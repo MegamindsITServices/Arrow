@@ -15,7 +15,7 @@ export async function sendEmail(options) {
   try {
     console.log(options.to);
     await transporter.sendMail({
-      from: `no.reply@arrowpublications.com<${process.env.SMTP_MAIL}>`,
+      from: `no.reply@arrowpublications.in<${process.env.SMTP_MAIL}>`,
       to: options.to,
       subject: options.subject,
       html: options.html,
@@ -23,6 +23,5 @@ export async function sendEmail(options) {
     console.log("Email sent successfully");
   } catch (error) {
     console.error("Error sending email:", error);
-    throw new Error("Failed to send email.");
   }
 }
