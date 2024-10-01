@@ -69,6 +69,7 @@ export const createProductController = async (req, res) => {
       price,
       isbn,
       category,
+      shippingPrice,
       // quantity,
     } = req.fields;
     const { photo } = req.files;
@@ -358,7 +359,7 @@ export const updateProductController = async (req, res) => {
       price,
       isbn,
       category,
-      // quantity,
+      shippingPrice,
       shipping,
     } = req.fields;
     const { photo } = req.files;
