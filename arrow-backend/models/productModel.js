@@ -63,6 +63,10 @@ const productSchema = new mongoose.Schema(
       contentType: String,
       required: false,
     },
+    shippingPrice: {
+      type: Number,
+      required: true,
+    },
     uid: {
       type: String,
       required: false,
