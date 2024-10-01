@@ -35,7 +35,7 @@ router.post("/payment", async (req, res) => {
     merchantUserId: "UYGFKJGF",
     amount: amount * 100,
     redirectUrl: `https://api.arrowpublications.in/api/v1/payment/status?id=${merchantTransactionId}`,
-    callbackUrl: `https://api.arrowpublications.in/api/v1/payment/status?id=${merchantTransactionId}`,
+    // callbackUrl: `https://api.arrowpublications.in/api/v1/payment/status?id=${merchantTransactionId}`,
     // redirectUrl: `http://localhost:8080/api/v1/payment/status?id=${merchantTransactionId}`,
     // callbackUrl: `http://localhost:8080/api/v1/payment/status?id=${merchantTransactionId}`,
     redirectMode: "POST",
