@@ -7,6 +7,7 @@ import path from "path";
 import { sendEmail } from "../helpers/sendMail.js";
 import userModel from "../models/userModel.js";
 import orderModal from "../models/orderModel.js";
+import { generateInvoice } from "../helpers/generatePdf.js";
 const __dirname = path.resolve();
 const router = express.Router();
 
@@ -28,16 +29,16 @@ const PHONE_PE_HOST_URL = "https://api.phonepe.com/apis/hermes";
 router.post("/payment", async (req, res) => {
   const { name, number, amount, orderData } = req.body;
   userOrderData = orderData;
+  userOrderData.payment = amount;
   const merchantTransactionId = generateTransactionId();
   let data = {
     merchantId: merchant_id,
     merchantTransactionId: merchantTransactionId,
-    merchantUserId: "UYGFKJGF",
+    merchantUserId: "UYGFKJGF_ID",
     amount: amount * 100,
     redirectUrl: `https://api.arrowpublications.in/api/v1/payment/status?id=${merchantTransactionId}`,
-    // callbackUrl: `https://api.arrowpublications.in/api/v1/payment/status?id=${merchantTransactionId}`,
     // redirectUrl: `http://localhost:8080/api/v1/payment/status?id=${merchantTransactionId}`,
-    // callbackUrl: `http://localhost:8080/api/v1/payment/status?id=${merchantTransactionId}`,
+
     redirectMode: "POST",
     mobileNumber: number,
     paymentInstrument: {
@@ -66,12 +67,17 @@ router.post("/payment", async (req, res) => {
       }
     )
     .then(function (response) {
-      console.log("response->", response.data);
+      // console.log(
+      //   "response->",
+      //   response.data.data.instrumentResponse.redirectInfo.url
+      // );
       res
         .status(200)
         .send(response.data.data.instrumentResponse.redirectInfo.url);
     })
     .catch(function (error) {
+      console.log(error);
+
       res.send(error);
     });
 });
@@ -99,7 +105,7 @@ router.post("/payment/status", async (req, res) => {
         },
       })
       .then(async function (response) {
-        console.log("response->", response.data);
+        // console.log("response->", response.data);
         if (response.data && response.data.code === "PAYMENT_SUCCESS") {
           // redirect to FE payment success status page
           const transactionId = response.data.data.transactionId;
@@ -107,11 +113,11 @@ router.post("/payment/status", async (req, res) => {
           await createOrder();
           res.redirect("https://arrowpublications.in/#/dashboard/user/orders");
         } else {
-           res.send("Payment Failed!!");
+          res.send(response.data);
         }
       })
       .catch(function (error) {
-        res.send(error);
+        res.send("Payment Failed!!");
       });
   } else {
     res.send("Failed to make payment");
@@ -122,22 +128,76 @@ const createOrder = async () => {
   try {
     const newOrder = await orderModal.create(userOrderData);
     const user = await userModel.findById(newOrder.buyer);
+    // Prepare file path
+    const invoiceFileName = `invoice-${newOrder._id}.pdf`;
+    const invoiceFilePath = path.join(__dirname, "invoices", invoiceFileName);
+
+    // Generate the invoice and save it to the file system
+    generateInvoice(newOrder, user, invoiceFilePath);
+    newOrder.invoiceUrl = `/invoices/${invoiceFileName}`;
+    await newOrder.save();
+
     const data = {
       name: user.name,
       orderId: newOrder._id,
       products: newOrder.products_name,
+      payment: newOrder.payment,
+      customerAddress: newOrder.address,
       trackingLink: "https://arrowpublications.in/#/dashboard/user/orders",
     };
+
+    // Prepare vendor email data
+    const vendorEmailData = {
+      vendorName: "Arrow Publications",
+      customerName: user.name,
+      customerEmail: user.email,
+      customerPhone: user.phone || "N/A",
+      customerAddress: newOrder.address,
+      products: newOrder.products_name.map((productName, index) => ({
+        name: productName,
+        quantity: newOrder.quantities[index].quantity,
+      })),
+      price: newOrder.payment,
+    };
+
+    // Render HTML for user email
     const html = await ejs.renderFile(
       path.join(__dirname, "/emails/order.ejs"),
       data
     );
 
-    await sendEmail({
+    // Render HTML for vendor email
+    const vendorHtml = await ejs.renderFile(
+      path.join(__dirname, "/emails/orderReceived.ejs"),
+      vendorEmailData
+    );
+
+    // Send user email
+    sendEmail({
       to: user.email,
       subject: "Order Placed Successfully",
       html,
+      attachments: [
+        {
+          filename: invoiceFileName,
+          path: invoiceFilePath,
+        },
+      ],
     });
+
+    // Send vendor email
+    sendEmail({
+      to: process.env.SMTP_MAIL,
+      subject: `New Order Received - Order ID: ${newOrder._id}`,
+      html: vendorHtml,
+      attachments: [
+        {
+          filename: invoiceFileName,
+          path: invoiceFilePath,
+        },
+      ],
+    });
+
     await clearCart(user._id);
   } catch (error) {
     console.error(error);
