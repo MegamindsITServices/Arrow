@@ -13,12 +13,12 @@ const transporter = nodemailer.createTransport({
 
 export async function sendEmail(options) {
   try {
-    console.log(options.to);
     await transporter.sendMail({
       from: `no.reply@arrowpublications.in<${process.env.SMTP_MAIL}>`,
       to: options.to,
       subject: options.subject,
       html: options.html,
+      attachments: options.attachments || [],
     });
     console.log("Email sent successfully");
   } catch (error) {
