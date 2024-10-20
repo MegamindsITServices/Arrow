@@ -37,36 +37,10 @@ const app = express();
 // });
 
 const allowedOrigins = [
- "https://mercury-t2.phonepe.com",
- "https://www.arrowpublications.in/#",
- "https://www.arrowpublications.in",
- "https://arrowpublications.in",
-   "https://arrowpublications.in/",
-  "http://localhost:8080",
+  "https://arrowpublications.in",
+  "https://arrowpublications.in/",
+  "https://api.arrowpublications.in",
   "http://localhost:3000",
-  "http://relaxed-cranachan-d0c6e0.netlify.app/",
-  "https://relaxed-cranachan-d0c6e0.netlify.app",
-  "http://arrowpublications.onrender.com",
-  "https://arrowpublications.onrender.com",
-  "https://arrowpublicationsindia.netlify.app/",
-  "https://arrowpublicationsindia.netlify.app",
-  "http://arrowpublicationsindia.netlify.app/",
-  "http://arrowpublications.onrender.com",
-  "https://arrowpublications.onrender.com",
-  "https://arrowpublications.onrender.com/",
-  "https://bharathmegaminds.com/",
-  "https://bharathmegaminds.com",
-  "http://bharathmegaminds.com/",
-  "https://arrowpublication.netlify.app/",
-  "http://arrowpublication.netlify.app/",
-  "https://arrowpublication.netlify.app",
-  "https://arrowpublications.netlify.app/",
-  "http://arrowpublications.netlify.app/",
-  "https://arrowpublications.netlify.app",
-  "http://arrowpublications.netlify.app",
-  "http://new-arrow-backend.onrender.com",
-  "https://new-arrow-backend.onrender.com",
-  "https://new-arrow-backend.onrender.com/",
   undefined,
 ];
 
@@ -82,10 +56,12 @@ const corsOptions = {
 };
 
 //middlewares
-app.use(cors(corsOptions));
+app.use(cors());
 app.options("*", cors(corsOptions));
 app.use(express.json());
 app.use(morgan("dev"));
+app.use("/invoices", express.static(path.join(__dirname, "invoices")));
+
 //routes
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/category", categoryRoutes);
@@ -100,7 +76,9 @@ app.use("/api/v1/bookphoto", HomeBookRoute);
 app.use("/api/v1/new-release", newReleaseRoutes);
 
 app.use("/api/v1/dealerstate", dealerStateRoute);
+// Payment route
 app.use("/api/v1", paymentsRoutes);
+
 //rest api
 
 const visitorSchema = new mongoose.Schema({
@@ -126,7 +104,6 @@ const siteViewsUp = async () => {
   }
 };
 
-
 app.get("/api/v1/visitor-count", async (req, res) => {
   await siteViewsUp();
   return res.json({ success: true });
@@ -139,8 +116,7 @@ app.get("/api/v1/visitors", async (req, res) => {
   });
 });
 
-
-app.get("/", (req, res) => {
+app.get("/s", (req, res) => {
   res.send("Welcome to Arrow Publication pvt. ltd.");
 });
 
