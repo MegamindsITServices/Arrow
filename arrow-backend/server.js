@@ -30,6 +30,7 @@ const app = express();
 
 const allowedOrigins = [
   "https://arrowpublications.in",
+  "https://arrowpublications.in",
   "https://arrowpublications.in/",
   "https://api.arrowpublications.in",
   "http://localhost:3000",
