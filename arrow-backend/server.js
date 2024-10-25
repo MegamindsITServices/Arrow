@@ -50,7 +50,7 @@ const corsOptions = {
 
 //middlewares
 app.use(cors());
-app.options("*", cors(corsOptions));
+// app.options("*", cors(corsOptions));
 app.use(express.json());
 app.use(morgan("dev"));
 app.use("/invoices", express.static(path.join(__dirname, "invoices")));
