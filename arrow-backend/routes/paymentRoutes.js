@@ -36,9 +36,8 @@ router.post("/payment", async (req, res) => {
     merchantTransactionId: merchantTransactionId,
     merchantUserId: "UYGFKJGF_ID",
     amount: amount * 100,
-    redirectUrl: `https://api.arrowpublications.in/api/v1/payment/status?id=${merchantTransactionId}`,
+    redirectUrl: `${process.env.SERVER_URL}/api/v1/payment/status?id=${merchantTransactionId}`,
     // redirectUrl: `http://localhost:8080/api/v1/payment/status?id=${merchantTransactionId}`,
-
     redirectMode: "POST",
     mobileNumber: number,
     paymentInstrument: {
@@ -111,7 +110,8 @@ router.post("/payment/status", async (req, res) => {
           const transactionId = response.data.data.transactionId;
           userOrderData.transactionId = transactionId;
           await createOrder();
-          res.redirect("https://arrowpublications.in/#/dashboard/user/orders");
+          res.redirect(`${process.env.CLIENT_URL}/#/dashboard/user/orders`);
+          // res.redirect("http://localhost:3000/#/dashboard/user/orders");
         } else {
           res.send(response.data);
         }
@@ -131,9 +131,11 @@ const createOrder = async () => {
     // Prepare file path
     const invoiceFileName = `invoice-${newOrder._id}.pdf`;
     const invoiceFilePath = path.join(__dirname, "invoices", invoiceFileName);
-
+    const order = await orderModal
+      .findById(newOrder._id)
+      .populate("buyer products");
     // Generate the invoice and save it to the file system
-    generateInvoice(newOrder, user, invoiceFilePath);
+    generateInvoice(order, user, invoiceFilePath);
     newOrder.invoiceUrl = `/invoices/${invoiceFileName}`;
     await newOrder.save();
 
@@ -143,7 +145,8 @@ const createOrder = async () => {
       products: newOrder.products_name,
       payment: newOrder.payment,
       customerAddress: newOrder.address,
-      trackingLink: "https://arrowpublications.in/#/dashboard/user/orders",
+      trackingLink: `${process.env.CLIENT_URL}/#/dashboard/user/orders`,
+      // trackingLink: "http://localhost:3000/#/dashboard/user/orders",
     };
 
     // Prepare vendor email data

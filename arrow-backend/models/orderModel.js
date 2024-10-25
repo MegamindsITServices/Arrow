@@ -40,8 +40,17 @@ const orderSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "users",
     },
+    transactionId: {
+      type: String,
+    },
     invoiceUrl: {
       type: String,
+    },
+    shippingAmount: {
+      type: Number,
+    },
+    discount: {
+      type: Number,
     },
     status: {
       type: String,

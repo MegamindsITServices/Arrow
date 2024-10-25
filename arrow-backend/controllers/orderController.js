@@ -71,7 +71,7 @@ export const createOrder = async (req, res) => {
       name: user.name,
       orderId: newOrder._id,
       products: newOrder.products_name,
-      trackingLink: "https://bharathmegaminds.com/#/dashboard/user/orders",
+      trackingLink: `${process.env.CLIENT_URL}/#/dashboard/user/orders`,
     };
     const html = await ejs.renderFile(
       path.join(__dirname, "/emails/order.ejs"),
@@ -93,7 +93,7 @@ export const createOrder = async (req, res) => {
 // Controller function to retrieve all orders
 export const getAllOrders = async (req, res) => {
   try {
-    const orders = await orderModal.find();
+    const orders = await orderModal.find().populate("buyer");
     res.status(200).json(orders);
   } catch (error) {
     console.error(error);
@@ -139,7 +139,7 @@ export const updateOrder = async (req, res) => {
       status: updatedOrder.status,
       orderId: updatedOrder._id,
       products: updatedOrder.products_name,
-      trackingLink: "https://bharathmegaminds.com/#/dashboard/user/orders",
+      trackingLink: `${process.env.CLIENT_URL}/#/dashboard/user/orders`,
     };
     const html = await ejs.renderFile(
       path.join(__dirname, "/emails/order_status.ejs"),

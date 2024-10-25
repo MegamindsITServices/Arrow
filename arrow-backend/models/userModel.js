@@ -37,13 +37,13 @@ const userSchema = new mongoose.Schema(
         type: String,
         required: true,
       },
-      locality: {
-        type: String,
-        required: true,
-      },
+      // locality: {
+      //   type: String,
+      //   required: true,
+      // },
       landmark: {
         type: String,
-        required: true,
+        required: false,
       },
       pincode: {
         type: String,
@@ -57,6 +57,12 @@ const userSchema = new mongoose.Schema(
     role: {
       type: Number,
       default: 0,
+    },
+    resetPasswordToken: {
+      type: String,
+    },
+    resetPasswordExpire: {
+      type: Date,
     },
     cart: [{}],
   },

@@ -4,6 +4,52 @@ import JWT from "jsonwebtoken";
 import orderModel from "../models/orderModel.js";
 import AdminModel from "../models/AdminModel.js";
 import OwnerModel from "../models/OwnerModel.js";
+import path from "path";
+const __dirname = path.resolve();
+import ejs from "ejs";
+import { sendEmail } from "../helpers/sendMail.js";
+import bcrypt from "bcrypt";
+import crypto from "crypto";
+
+const createActivationToken = (user) => {
+  const token = JWT.sign(user, process.env.ACTIVATION_SECRET, {
+    expiresIn: process.env.ACTIVATION_EXPIRE,
+  });
+  return token;
+};
+
+const sendVerficationEmail = async (user) => {
+  const activationToken = createActivationToken(user);
+  const activationUrl = `${process.env.SERVER_URL}/api/v1/auth/verify-email?token=${activationToken}`;
+  const data = { user: { name: user.name }, activationUrl };
+
+  const html = await ejs.renderFile(
+    path.join(__dirname, "/emails/activation-email.ejs"),
+    data
+  );
+  await sendEmail({
+    to: user.email,
+    subject: "Activate Your Acount",
+    html,
+  });
+};
+
+export const verifyEmail = async (req, res) => {
+  try {
+    const { token } = req.query;
+
+    const decodeData = JWT.verify(token, process.env.ACTIVATION_SECRET);
+    console.log(decodeData);
+    const hashedPassword = await bcrypt.hash(decodeData.password, 10);
+    decodeData.password = hashedPassword;
+    await userModel.create(decodeData);
+
+    res.redirect(`${process.env.CLIENT_URL}/#/login`);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: error.message });
+  }
+};
 
 //user register
 export const registerController = async (req, res) => {
@@ -38,23 +84,11 @@ export const registerController = async (req, res) => {
       });
     }
 
-    //Register User
-    const hashedPassword = await hashPassword(password);
+    await sendVerficationEmail(req.body);
 
-    //save
-    const user = new userModel({
-      name,
-      email,
-      phone,
-      address,
-      password: hashedPassword,
-      answer,
-    }).save();
-
-    res.status(201).send({
+    res.status(201).json({
       success: true,
-      message: "User Register Successfully",
-      user,
+      message: "Please check your email to activate your account",
     });
   } catch (error) {
     console.log(error);
@@ -307,21 +341,24 @@ export const loginController = async (req, res) => {
   }
 };
 
-//forgotPasswordController
-export const forgotPasswordController = async (req, res) => {
+// Change password
+export const updatePasswordController = async (req, res) => {
   try {
-    const { email, answer, newPassword } = req.body;
-    if (!email) {
-      res.status(400).send({ message: "Email is required" });
-    }
-    if (!answer) {
-      res.status(400).send({ message: "answer is required" });
+    const { password, newPassword } = req.body;
+    if (!password) {
+      res.status(400).send({ message: "Password is required" });
     }
     if (!newPassword) {
       res.status(400).send({ message: "New Password is required" });
     }
-    //check
-    const user = await userModel.findOne({ email, answer });
+
+    // Check
+    const user = await userModel.findById(req.user._id);
+    //password
+    if (password && password.length < 6) {
+      return res.json({ error: "Passsword is required and 6 character long" });
+    }
+
     //validation
     if (!user) {
       return res.status(404).send({
@@ -330,10 +367,12 @@ export const forgotPasswordController = async (req, res) => {
       });
     }
     const hashed = await hashPassword(newPassword);
+
     await userModel.findByIdAndUpdate(user._id, { password: hashed });
+
     res.status(200).send({
       success: true,
-      message: "Password Reset Successfully",
+      message: "Password Changed Successfully",
     });
   } catch (error) {
     console.log(error);
@@ -459,4 +498,69 @@ export const getOrdersController = async (req, res) => {
       error,
     });
   }
+};
+
+// Passowrd forgot------------------------>
+
+// Send reset password email
+export const sendResetPassword = async (req, res, next) => {
+  const { email } = req.body;
+  const user = await userModel.findOne({ email });
+
+  if (!user) return res.status(400).json({ message: "User not registered" });
+
+  const resetToken = crypto.randomBytes(20).toString("hex");
+  user.resetPasswordToken = crypto
+    .createHash("sha256")
+    .update(resetToken)
+    .digest("hex");
+  user.resetPasswordExpire = Date.now() + 15 * 60 * 1000;
+
+  const resetUrl = `${process.env.CLIENT_URL}/#/reset-password/${resetToken}`;
+  const html = await ejs.renderFile(
+    path.join(__dirname, "/emails/resetPassword.ejs"),
+    { user, resetUrl }
+  );
+
+  await sendEmail({ to: user.email, subject: "Password Reset", html });
+  await user.save();
+
+  res.status(200).json({ message: "Please check your mail" });
+};
+
+// Reset password using token
+export const resetPassword = async (req, res, next) => {
+  const resetPasswordToken = crypto
+    .createHash("sha256")
+    .update(req.params.token)
+    .digest("hex");
+
+  const user = await userModel.findOne({
+    resetPasswordToken,
+    resetPasswordExpire: { $gt: Date.now() },
+  });
+
+  if (!user)
+    return res.status(400).json({ message: "Invalid or expired token" });
+
+  const { password, confirmPassword } = req.body;
+  if (!password || !confirmPassword || password !== confirmPassword) {
+    return res
+      .status(400)
+      .json({ message: "Passwords do not match or are missing" });
+  }
+
+  user.password = await bcrypt.hash(password, 10);
+  user.resetPasswordToken = undefined;
+  user.resetPasswordExpire = undefined;
+
+  const html = await ejs.renderFile(
+    path.join(__dirname, "/emails/passwordSuccessfull.ejs"),
+    { user }
+  );
+  await sendEmail({ to: user.email, subject: "Password Reset Success", html });
+
+  await user.save();
+
+  res.status(200).json({ message: "Password has been updated successfully" });
 };

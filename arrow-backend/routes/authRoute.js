@@ -4,7 +4,6 @@ import {
   registerController,
   loginController,
   testController,
-  forgotPasswordController,
   updateProfileController,
   getOrdersController,
   userDetailsController,
@@ -16,6 +15,10 @@ import {
   ownerRegisterController,
   getAllOwnersController,
   testOwnerController,
+  verifyEmail,
+  sendResetPassword,
+  resetPassword,
+  updatePasswordController,
 } from "../controllers/authController.js";
 import {
   isAdmin,
@@ -26,6 +29,7 @@ const router = express.Router();
 
 //REGISTER || METHOD POST
 router.post("/register", registerController);
+router.get("/verify-email", verifyEmail);
 //REGISTER || ADMIN
 router.post("/admin-register", adminRegisterController);
 
@@ -51,7 +55,9 @@ router.delete("/delete-user/:id", userDeleteController);
 router.delete("/delete-owner/:id", ownerDeleteController);
 
 //Forgot password || POST
-router.post("/forgot-password", forgotPasswordController);
+// router.post("/forgot-password", forgotPasswordController);
+router.post("/forgot-password", sendResetPassword);
+router.post("/reset-password/:token", resetPassword);
 
 //Test Routes
 router.get("/test", requireSignIn, isAdmin, testController);
@@ -73,6 +79,7 @@ router.get("/owner-auth", requireSignIn, isOwner, (req, res) => {
 
 //user update profile
 router.put("/profile", requireSignIn, updateProfileController);
+router.put("/update-password", requireSignIn, updatePasswordController);
 
 //admin update profile
 router.put("/admin-profile-update/:id", updateAdminProfileController);

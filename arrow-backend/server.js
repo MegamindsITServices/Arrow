@@ -18,6 +18,8 @@ import newReleaseRoutes from "./routes/newReleaseRoutes.js";
 import mongoose from "mongoose";
 import paymentsRoutes from "./routes/paymentRoutes.js";
 import path from "path";
+import { sendContactEmail } from "./controllers/extraController.js";
+
 //Configure env
 dotenv.config();
 const __dirname = path.resolve();
@@ -25,16 +27,6 @@ const __dirname = path.resolve();
 // connectDB();
 //rest object
 const app = express();
-// app.use((req, res, next) => {
-//   if (/(.ico|.js|.css|.jpg|.png|.map)$/i.test(req.path)) {
-//     next();
-//   } else {
-//     res.header("Cache-Control", "private, no-cache, no-store, must-revalidate");
-//     res.header("Expires", "-1");
-//     res.header("Pragma", "no-cache");
-//     res.sendFile(path.join(__dirname, "build", "index.html"));
-//   }
-// });
 
 const allowedOrigins = [
   "https://arrowpublications.in",
@@ -78,6 +70,10 @@ app.use("/api/v1/new-release", newReleaseRoutes);
 app.use("/api/v1/dealerstate", dealerStateRoute);
 // Payment route
 app.use("/api/v1", paymentsRoutes);
+
+// Contact form
+
+app.post("/api/v1/contact-form", sendContactEmail);
 
 //rest api
 
