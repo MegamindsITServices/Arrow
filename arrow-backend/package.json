@@ -29,6 +29,7 @@
     "express-formidable": "^1.2.0",
     "http-proxy-middleware": "^3.0.0",
     "https-browserify": "^1.0.0",
+    "json2csv": "^6.0.0-alpha.2",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.8.4",
     "morgan": "^1.10.0",

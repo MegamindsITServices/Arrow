@@ -8,6 +8,7 @@ import userModel from "../models/userModel.js";
 import braintree from "braintree";
 import fs from "fs";
 import { parse } from "csv-parse";
+import { Parser } from "json2csv";
 import path from "path";
 import { getGlobals } from "common-es";
 dotenv.config();
@@ -169,15 +170,8 @@ export const createProductController = async (req, res) => {
 export const getProductController = async (req, res) => {
   try {
     const pageNumber = parseInt(req.query.pageNumber) || 1;
-    const limit = parseInt(req.query.limit) || 40;
+    const limit = parseInt(req.query.limit) || 48;
     const startIndex = (pageNumber - 1) * limit;
-
-    console.log(
-      "Page number: " + pageNumber,
-      "\n\nLimit: " + limit,
-      "\n\n",
-      startIndex
-    );
 
     const pipeline = [
       { $match: {} },
@@ -225,6 +219,58 @@ export const getProductController = async (req, res) => {
       success: false,
       error,
       message: "Error to get product",
+    });
+  }
+};
+
+// Get All products as csv
+
+export const getProductAsCSVController = async (req, res) => {
+  try {
+    const products = await productModel
+      .find({})
+      .select("-photo -frontphoto -backphoto")
+      .populate("subject")
+      .populate("category")
+      .lean();
+    const productsWithNames = products.map((product) => ({
+      ...product,
+      subject: product.subject?.name || "",
+      category: product.category?.name || "",
+    }));
+
+    const fields = [
+      "_id",
+      "name",
+      "slug",
+      "description",
+      "author",
+      "pages",
+      "subject",
+      "category",
+      "price",
+      "isbn",
+      "uid",
+      "createdAt",
+      "updatedAt",
+      "shipping",
+      "shippingPrice",
+    ];
+
+    // Convert JSON data to CSV format
+    const json2csvParser = new Parser({ fields });
+    const csv = json2csvParser.parse(productsWithNames);
+
+    // Set response headers for file download
+    res.header("Content-Type", "text/csv");
+    res.attachment("products.csv");
+    return res.status(200).send(csv);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      error,
+      message: "Error retrieving products",
     });
   }
 };
@@ -453,6 +499,7 @@ export const updateProductController = async (req, res) => {
     });
   }
 };
+
 //Filter Products
 // export const productFiltersController = async (req, res) => {
 //   try {
@@ -772,6 +819,7 @@ export const addCartItem = async (req, res) => {
     console.log({ productID, userID, role });
 
     const user = await userModel.findById(userID);
+    console.log(userID);
 
     if (!user) {
       return res
@@ -803,7 +851,6 @@ export const addCartItem = async (req, res) => {
     }
 
     const updatedUser = await user.save();
-    console.log(updatedUser);
 
     res.status(200).json({ cart: updatedUser.cart });
   } catch (error) {
@@ -881,10 +928,6 @@ export const uploadFile = async (req, res) => {
 
             for (let j = 0; j < headers.length; j++) {
               const value = row[j].trim();
-              if (headers[j] !== "isbn" && !value) {
-                allFieldsPresent = false;
-                break;
-              }
 
               if (headers[j] === "price") {
                 const priceString = value.replace(/\t/g, ""); // Replace tabs with empty string
@@ -911,8 +954,9 @@ export const uploadFile = async (req, res) => {
                 price,
                 isbn,
                 uid,
-                Subject,
-                Class,
+                subject,
+                category,
+                shippingPrice,
               } = product;
 
               const parsedPrice = parseFloat(price).toFixed(2) || 0;
@@ -926,19 +970,19 @@ export const uploadFile = async (req, res) => {
                 "image-512.jpg"
               );
 
-              let subject = await SubjectModel.findOne({ name: Subject });
-              if (!subject) {
-                subject = await SubjectModel.create({
-                  name: Subject,
-                  slug: slugify(Subject),
+              let subjects = await SubjectModel.findOne({ name: subject });
+              if (!subjects) {
+                subjects = await SubjectModel.create({
+                  name: subject,
+                  slug: slugify(subject),
                 });
               }
-              let category = await CategoryModel.findOne({ name: Class });
+              let categorys = await CategoryModel.findOne({ name: category });
 
-              if (!category) {
-                category = await CategoryModel.create({
-                  name: Class,
-                  slug: slugify(Class),
+              if (!categorys) {
+                categorys = await CategoryModel.create({
+                  name: category,
+                  slug: slugify(category),
                 });
               }
 
@@ -952,12 +996,13 @@ export const uploadFile = async (req, res) => {
                 existingProduct.price = parsedPrice;
                 existingProduct.isbn = parsedIsbn ?? "";
                 existingProduct.slug = slug;
-                existingProduct.subject = subject._id;
-                existingProduct.category = category._id;
-                existingProduct.photo = {
-                  data: fs.readFileSync(defaultPhotoPath),
-                  contentType: "image/jpeg",
-                };
+                existingProduct.subject = subjects._id;
+                existingProduct.category = categorys._id;
+                existingProduct.shippingPrice = shippingPrice || 0;
+                // existingProduct.photo = {
+                //   data: fs.readFileSync(defaultPhotoPath),
+                //   contentType: "image/jpeg",
+                // };
 
                 await existingProduct.save();
                 results.push(existingProduct);
@@ -971,8 +1016,9 @@ export const uploadFile = async (req, res) => {
                   isbn: parsedIsbn ?? "",
                   slug,
                   uid,
-                  subject: subject._id,
-                  category: category._id,
+                  subject: subjects._id,
+                  category: categorys._id,
+                  shippingPrice: shippingPrice || 0,
                   photo: {
                     data: fs.readFileSync(defaultPhotoPath),
                     contentType: "image/jpeg",

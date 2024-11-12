@@ -118,13 +118,10 @@ export const getOrderById = async (req, res) => {
 // Controller function to update an existing order
 export const updateOrder = async (req, res) => {
   try {
-    const updatedOrder = await orderModal.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
+    const updatedOrder = await orderModal
+      .findByIdAndUpdate(req.params.id, req.body, { new: true })
+      .populate("buyer");
 
-    console.log(updateOrder);
     if (!updatedOrder) {
       return res.status(404).json({ message: "Order not found" });
     }

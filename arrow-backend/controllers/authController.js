@@ -103,7 +103,15 @@ export const registerController = async (req, res) => {
 //admin register
 export const adminRegisterController = async (req, res) => {
   try {
-    const { name, email, password, phone, address, answer } = req.body;
+    const {
+      name,
+      email,
+      password,
+      phone,
+      address,
+      answer,
+      role = 1,
+    } = req.body;
     if (!name) {
       return res.send({ message: "Name is Required" });
     }
@@ -144,7 +152,7 @@ export const adminRegisterController = async (req, res) => {
       address,
       password: hashedPassword,
       answer,
-      role: 1, // Set role to 1 for user
+      role,
     });
     await user.save();
     // Create and save admin object
@@ -328,6 +336,7 @@ export const loginController = async (req, res) => {
         address: user.address,
         role: user.role,
         userID: user._id,
+        _id: user._id,
       },
       token,
     });
@@ -345,6 +354,7 @@ export const loginController = async (req, res) => {
 export const updatePasswordController = async (req, res) => {
   try {
     const { password, newPassword } = req.body;
+
     if (!password) {
       res.status(400).send({ message: "Password is required" });
     }
@@ -354,6 +364,14 @@ export const updatePasswordController = async (req, res) => {
 
     // Check
     const user = await userModel.findById(req.user._id);
+    const isPasswordMatch = await comparePassword(password, user.password);
+    if (!isPasswordMatch) {
+      return res.status(401).send({
+        success: false,
+        message: "Invalid Credentials",
+      });
+    }
+
     //password
     if (password && password.length < 6) {
       return res.json({ error: "Passsword is required and 6 character long" });

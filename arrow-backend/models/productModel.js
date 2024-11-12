@@ -40,10 +40,6 @@ const productSchema = new mongoose.Schema(
       ref: "Category",
       required: false,
     },
-    // quantity: {
-    //   type: Number,
-    //   required: false,
-    // },
     shipping: {
       type: Boolean,
       default: false,
@@ -65,6 +61,7 @@ const productSchema = new mongoose.Schema(
     },
     shippingPrice: {
       type: Number,
+      default: 0,
       required: true,
     },
     uid: {

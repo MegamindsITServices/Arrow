@@ -24,6 +24,7 @@ import {
   uploadFile,
   searchSuggestionsFilterController,
   getNewProductUid,
+  getProductAsCSVController,
 } from "../controllers/productController.js";
 const router = express.Router();
 const upload = multer({ dest: "uploads/" });
@@ -48,6 +49,7 @@ router.get("/get-product/:uid", getSingleProductController);
 
 //get photo
 router.get("/product-photo/:pid", productPhotoController);
+router.get("/csv", getProductAsCSVController);
 
 //get front photo
 router.get("/product-frontphoto/:pid", productFrontPhotoController);

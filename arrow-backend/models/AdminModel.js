@@ -37,13 +37,9 @@ const adminSchema = new mongoose.Schema(
         type: String,
         required: true,
       },
-      locality: {
-        type: String,
-        required: true,
-      },
       landmark: {
         type: String,
-        required: true,
+        required: false,
       },
       pincode: {
         type: String,
