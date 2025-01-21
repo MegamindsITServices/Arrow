@@ -1,0 +1,159 @@
+.card-cart {
+  max-width: 100%;
+  height: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  flex-direction: row;
+  border: 2px solid #f5b777;
+  transition: all 0.5s ease;
+}
+.cart-wrapper {
+  padding: 0 3rem;
+}
+.cart-col {
+  margin-top: 2rem;
+}
+
+.line-through {
+  font-size: 1rem;
+  color: rgb(7, 147, 7);
+  padding-left: 5px;
+  text-decoration: line-through;
+}
+
+.auth-content {
+  color: black;
+  border: 1px solid gray;
+  padding: 1rem;
+
+  border-radius: 10px;
+}
+
+.auth-content h5 {
+  font-size: 1rem;
+  color: gray;
+}
+.card-cart:hover {
+  transform: scale(1.03);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.card-cart img {
+  max-width: 60%;
+  height: 90%;
+}
+.card-body {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+@media screen and (max-width: 475) {
+  .card {
+    font-size: 0.9em;
+  }
+}
+.cart-length {
+  color: gray;
+  font-size: 20px;
+  margin-top: 10px;
+}
+.cart-page {
+  margin-top: 64px;
+}
+
+.cart-page h1 {
+  padding: 15px !important;
+  font-family: "roboto", sans-serif;
+  font-weight: normal;
+  background-color: rgba(0, 0, 255, 0.072) !important;
+}
+.cart-page h1 > p {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.cart-page .card {
+  padding: 5px !important;
+  height: 150px !important;
+  margin-bottom: 5px !important;
+}
+.cart-page .cart-remove-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cart-page .cart-summary {
+  text-align: center;
+  /* margin-top: -140px !important; */
+}
+.quantity-controls {
+  display: flex;
+  justify-content: space-between;
+}
+.quantity-btn {
+  background-color: #e0731d;
+  color: #fff;
+  border: none;
+  padding: 1px 8px;
+  margin-left: 15px;
+  margin-right: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.quantity {
+  font-size: 19px;
+}
+.icon-plus-minus {
+  margin-right: -2px;
+  height: 30px;
+}
+@media (max-width: 768px) {
+  .card-cart {
+    max-width: 95%; /* Adjust the max-width to increase the card width */
+    height: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    flex-direction: row;
+    margin-left: 15px;
+    /* box-shadow: 0px 30px 10px -20px rgba(50, 50, 93, 0.25),
+      0px 30px 60px -30px rgba(0, 0, 0, 0.3),
+      inset 0px -2px 6px 0px rgba(10, 37, 64, 0.35); */
+
+    border: 2px solid #f5b777;
+    background-color: #f5f5f5;
+  }
+  .card-cart img {
+    max-width: 20%;
+    height: 90%;
+  }
+  .cart-wrapper {
+    padding: 0 0.2rem;
+  }
+}
+
+@media (min-width: 619px) and (max-width: 1152px) {
+  .auth-content {
+    margin-left: 36px;
+  }
+  .cart-wrapper {
+    padding: 0 0.5rem;
+  }
+  .card-cart {
+    max-width: 100%; /* Adjust the max-width to increase the card width */
+    height: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    flex-direction: row;
+    margin-left: 1px;
+    /* box-shadow: 0px 30px 10px -20px rgba(50, 50, 93, 0.25),
+      0px 30px 60px -30px rgba(0, 0, 0, 0.3),
+      inset 0px -2px 6px 0px rgba(10, 37, 64, 0.35); */
+    border: 2px solid #f5b777;
+    background-color: #f5f5f5;
+  }
+  .card-cart img {
+    max-width: 50%;
+    height: 90%;
+  }
+}

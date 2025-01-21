@@ -1,0 +1,48 @@
+.hero-dealer {
+  background-color: gray;
+  padding: calc(4rem - 30px) 0 0rem 0;
+  height: 100px;
+  position: relative;
+
+  background-repeat: no-repeat;
+  background-size: cover; /* Ensure the background image covers the entire container */
+  background-position: center; /* Center the background image horizontally and vertically */
+}
+.list-dealers {
+  color: black;
+  margin-top: 10px;
+}
+.dealer-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.intro-excerpt-dealer {
+  display: flex;
+  justify-content: space-between; /* Distribute items along the main axis */
+  align-items: center;
+  color: white;
+  margin-right: 50%;
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Segoe UI Regular"),
+    url("../../public/fonts/Segoe\ UI.woff") format("woff");
+  margin-top: 80px;
+}
+.hero-dealer {
+  /* background-image: url("../../public/images/shopby.jpg"); */
+  background-color: gray;
+  padding: calc(4rem - 30px) 0 0rem 0;
+  height: 180px;
+  position: relative;
+
+  background-repeat: no-repeat;
+  background-size: cover; /* Ensure the background image covers the entire container */
+  background-position: center; /* Center the background image horizontally and vertically */
+}
+@media (max-width: 768px) {
+  .list-dealers {
+    font-size: 13px;
+  }
+}

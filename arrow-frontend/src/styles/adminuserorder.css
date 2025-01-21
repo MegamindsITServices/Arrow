@@ -1,0 +1,65 @@
+.add {
+  width: 20%;
+}
+/* Custom CSS for making the table mobile responsive */
+
+/* Center align the table headings */
+.table th {
+  text-align: center;
+}
+
+/* Hide the table headers on smaller screens to save space */
+@media (max-width: 576px) {
+  .table thead {
+    display: none;
+  }
+
+  /* Ensure each table cell takes up full width */
+  .table td,
+  .table th {
+    width: 100%;
+    display: block;
+    text-align: left;
+  }
+
+  /* Show headers as pseudo elements */
+  .table tbody td:before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: block;
+  }
+}
+
+/* Style the table cells for better readability */
+.table td,
+.table th {
+  padding: 0.75rem;
+  vertical-align: top;
+}
+
+/* Ensure the "Change Status" dropdown is visible on smaller screens */
+.dropdown-toggle {
+  display: block;
+}
+
+/* Adjust the width and margin of the dropdown menu */
+.dropdown-menu {
+  min-width: auto;
+  margin: 0;
+}
+
+/* Center align the dropdown items */
+.dropdown-menu li {
+  text-align: center;
+}
+
+/* Ensure the dropdown menu is positioned properly */
+.dropdown-menu.show {
+  position: relative;
+}
+
+/* Responsiveness */
+
+.table-wrapper-responsive {
+  overflow-x: auto;
+}

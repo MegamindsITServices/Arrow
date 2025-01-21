@@ -1,0 +1,124 @@
+.product-details-img {
+  width: 100%;
+
+  height: fit-content;
+}
+.product-details {
+  margin: auto;
+}
+
+.carousel-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
+}
+.carousel-product-details {
+  width: 100%;
+  height: 90%;
+  margin-left: 10%;
+}
+.Butn-add-cart {
+  padding: 5px 70px;
+  font-size: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #e0731d;
+  border: 2px solid #e0731d;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+.product-details-butn {
+  padding: 5px 20px;
+  font-size: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #e0731d;
+  border: 2px solid #e0731d;
+  cursor: pointer;
+}
+.product-name {
+  color: red;
+}
+.desc {
+  font-size: 15px;
+  text-align: justify;
+}
+.price {
+  font-size: 20px;
+  display: flex;
+}
+.Butn-add-cart-similar {
+  padding: 5px 70px;
+  font-size: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #e0731d;
+  border: 2px solid #e0731d;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+  margin-left: -2px;
+}
+.card-similar {
+  margin-left: 30px;
+  border: 2px solid #ccc;
+}
+@media (max-width: 767px) {
+  .product-details-img {
+    width: 60%;
+    margin-left: 58px;
+    height: 96%;
+  }
+  .carousel-product-details {
+    width: 90%;
+    height: 90%;
+    margin-left: 7%;
+  }
+  .price {
+    font-size: 18px;
+    display: flex;
+  }
+  .p-name-details {
+    margin-top: 3px;
+  }
+  .card-similar {
+    margin-left: 30px;
+    border: 2px solid #ccc;
+    margin-top: 10px;
+  }
+  .similar-card-img {
+    height: 350px;
+    width: 100%;
+  }
+  .Butn-add-cart-similar {
+    padding: 5px 70px;
+    font-size: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #e0731d;
+    border: 2px solid #e0731d;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease,
+      border-color 0.3s ease;
+    margin-left: 25px;
+  }
+  .similar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .similar-desc {
+    font-size: 15px;
+  }
+  .similar-name {
+    color: red;
+    font-size: 1.2em;
+  }
+}

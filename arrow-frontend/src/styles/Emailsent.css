@@ -1,0 +1,29 @@
+.email-sent-container {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 0;
+  overflow: hidden;
+}
+
+.content-box {
+  max-width: 600px;
+  padding: 20px;
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 10px;
+  font-size: 42px;
+  font-weight: bold;
+  color: #d56742;
+}
+
+.message {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #71717a;
+}

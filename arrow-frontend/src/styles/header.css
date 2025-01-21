@@ -1,0 +1,419 @@
+/* New Navbar Styles */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.navbar-nav {
+  display: flex; /* Ensure navbar items are displayed in a row */
+  justify-content: space-between; /* Add space between navbar items */
+  align-items: center; /* Center align navbar items */
+  margin: 0; /* Remove margin */
+  padding: 0; /* Remove padding */
+}
+
+.navbar-nav > li {
+  margin-right: 3px;
+}
+.nav-link {
+  white-space: nowrap;
+}
+.new-navbar .navbar-brand img {
+  max-height: 100%;
+}
+.arrow-logo-nav {
+  height: auto;
+  width: 300px;
+  margin-left: 14%;
+}
+.new-navbar .navbar-nav .nav-link {
+  color: black;
+  font-size: 12px;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+.custom-navbar .navbar-brand {
+  font-size: 32px;
+  font-weight: 600;
+}
+.navbar-brand {
+  margin-left: 90px;
+}
+.navbar-nav {
+  margin-right: 30px;
+}
+.nav-link:hover,
+.nav-link.active {
+  background-color: #e0731d;
+  border-radius: 20px;
+  color: #fff;
+  padding: 6px 25px;
+}
+.dropdown-item.active,
+.dropdown-item:hover {
+  background-color: #e0731d; /* Set to your desired background color */
+  color: white; /* Set to your desired text color */
+}
+.nav-link:hover {
+  background-color: #e0731d;
+  border-radius: 20px;
+  color: #fff;
+  padding: 6px 25px;
+}
+.dari {
+  color: black;
+}
+.dari-drop {
+  color: black;
+  margin-right: 5px;
+}
+
+.dropdown-menu {
+  z-index: 1001; /* Ensure dropdown menu appears above the navbar */
+  position: absolute; /* Set position to absolute */
+  top: 100%; /* Position dropdown below the parent item */
+  left: 0; /* Align dropdown with the left edge of the parent item */
+  overflow: visible !important; /* Ensure dropdown is fully visible */
+}
+.admin {
+  z-index: 1001;
+  position: absolute;
+  background-color: red;
+  top: 100%;
+  left: 0;
+  overflow: visible;
+}
+.nav-item .dropdown {
+  position: relative; /* Set position to relative */
+}
+
+.dropdown-menu .show {
+  display: block;
+  width: 20px;
+}
+
+.dropdown-item {
+  color: black;
+}
+
+.dropdown-item:hover {
+  background-color: #e0731d;
+  color: #fff;
+}
+.cart-button {
+  margin-left: 10px;
+  font-size: 28px;
+  color: #ffffff;
+}
+.search-button {
+  margin-left: 10px;
+  font-size: 30px;
+}
+.icon {
+  margin-right: 3px;
+  height: 30px;
+}
+.header-login {
+  background-color: #e0731d;
+  color: #fff;
+  border: none;
+  padding: 5px 25px;
+  margin-left: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.header-signup {
+  background-color: #e0731d;
+  color: #fff;
+  border: none;
+  padding: 5px 25px;
+  margin-left: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.mobile {
+  display: none;
+}
+
+@media only screen and (max-width: 1206px) {
+  .navbar-brand {
+    margin-left: 3px;
+  }
+  .arrow-logo-nav {
+    height: auto;
+    width: 190px;
+  }
+  .nav-link {
+    font-size: 14px;
+  }
+}
+@media (min-width: 1206px) and (max-width: 1280px) {
+  .arrow-logo-nav {
+    margin-left: -80px;
+  }
+  .nav-link {
+    font-size: 13px;
+  }
+  .navbar-nav {
+    margin-left: 6px;
+  }
+  .nav-item {
+    font-size: 13px;
+  }
+}
+/* Responsive Navbar */
+@media only screen and (max-width: 768px) {
+  .mobile {
+    display: block;
+  }
+  .header {
+    background-color: #656c74;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    height: 10vh;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: center;
+  }
+  .first {
+    display: none;
+  }
+  .phone-mail {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    margin-right: -3px;
+    margin-bottom: 10px;
+  }
+  .cart-button {
+    margin-left: 0px;
+    /* margin-top: 1rem; */
+  }
+  .cart-wrapper {
+    margin-top: 0.5rem;
+  }
+  .header-phone,
+  .header-mail {
+    font-size: 17px;
+    color: white;
+    margin: 5px;
+  }
+  .header-phone {
+    font-size: 9px;
+  }
+  .header-signup {
+    background-color: #e0731d;
+    color: #fff;
+    border: none;
+    padding: 3px 17px;
+    margin-left: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .header-login {
+    background-color: #e0731d;
+    color: #fff;
+    border: none;
+    padding: 3px 17px;
+    margin-left: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 25px;
+  }
+  .action-buttons {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping to next line */
+    justify-content: center; /* Center align items horizontally */
+  }
+  .search-container {
+    margin: 10px;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .navbar-nav > li {
+    margin: 0;
+  }
+  .nav-link:hover {
+    padding: 10px 15px;
+    font-size: 14px;
+    background-color: #e0731d;
+  }
+  .new-navbar .navbar-brand img {
+    width: 200px; /* Adjust logo width for mobile */
+  }
+  .navbar-brand {
+    margin-left: 0px;
+  }
+  .dropdown-menu {
+    position: static;
+    display: none;
+    float: none;
+    width: auto;
+  }
+  .dari {
+    display: none;
+  }
+  .dari-drop {
+    display: none;
+  }
+  .dropdown-menu.show {
+    display: block;
+    position: static;
+  }
+  .dropdown-item {
+    padding: 6px 10px;
+  }
+  .dropdown-toggle::after {
+    display: none;
+  }
+  .dropdown-menu.show {
+    padding: 0;
+  }
+
+  .header-mail {
+    font-size: 12px;
+  }
+  .header-phone {
+    font-size: 11px;
+  }
+
+  .navbar-brand img {
+    height: 50px;
+    width: 200px;
+  }
+  .search-container {
+    margin-left: -5px;
+  }
+  .search-button {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1182px) {
+  .header-login {
+    background-color: #e0731d;
+    color: #fff;
+    border: none;
+    padding: 1px 18px;
+    margin-left: 27px;
+    margin-right: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .reg {
+    display: none;
+  }
+  .sign {
+    display: none;
+  }
+  .icon {
+    height: 30px;
+  }
+  .header-signup {
+    background-color: #e0731d;
+    color: #fff;
+    border: none;
+    padding: 0px 16px;
+    margin-left: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .cart-button {
+    margin-left: 5px;
+    font-size: 28px;
+    color: #ffffff;
+  }
+  .header-mail {
+    font-size: 12px;
+    color: white;
+    margin-top: 21px;
+    margin-inline-start: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header-phone {
+    font-size: 11px;
+    margin-top: 20px;
+    color: white;
+    margin-left: 18px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .phone-mail {
+    display: flex;
+    justify-content: space-between;
+    margin-right: -3%;
+  }
+  .search-form {
+    align-items: center;
+    margin-left: 31px;
+  }
+  .navbar-brand {
+    margin-left: 66px;
+  }
+  .arrow-logo-nav {
+    height: auto;
+    width: 149px;
+  }
+
+  .nav-link {
+    padding: 10px; /* Reduce padding for smaller screens */
+    font-size: 11px; /* Adjust font size for smaller screens */
+    color: black; /* Set font color */
+    text-decoration: none; /* Remove default underline */
+    transition: all 0.3s ease; /* Add transition effect */
+  }
+
+  .arrow-logo-nav {
+    height: 63px; /* Adjust logo height for smaller screens */
+    width: 165px; /* Allow logo width to adjust */
+  }
+
+  .dari {
+    display: none; /* Hide divider for smaller screens */
+  }
+
+  .dari-drop {
+    display: none; /* Hide divider for smaller screens */
+  }
+  .navbar-brand {
+    margin-left: 66px; /* Adjust margin for smaller screens */
+  }
+  .dropdown-menu {
+    position: absolute; /* Change dropdown menu position to absolute */
+    top: 100%; /* Position dropdown menu below parent */
+    left: 0; /* Position dropdown menu at the left of parent */
+    z-index: 1000; /* Ensure dropdown menu is on top */
+    display: none; /* Hide dropdown menu by default */
+    background-color: #fff; /* Set background color */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow */
+    min-width: 100px; /* Set minimum width */
+    padding-right: 76%;
+  }
+  .navbar-nav > li {
+    margin-right: 8px;
+  }
+  .dropdown-item {
+    padding: 10px; /* Adjust padding for smaller screens */
+    font-size: 11px; /* Adjust font size for smaller screens */
+    color: black; /* Set font color */
+    text-decoration: none; /* Remove default underline */
+    display: block; /* Ensure dropdown items are displayed as block */
+    transition: all 0.3s ease; /* Add transition effect */
+  }
+}

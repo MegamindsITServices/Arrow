@@ -1,0 +1,40 @@
+.shadow {
+  margin-right: 30px;
+}
+.card-dealer {
+  width: 100%;
+  border: 3px solid white;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  transition: all 0.5s ease;
+  min-height: 13rem;
+  border: 1px solid #b2beb5;
+}
+.card-dealer:hover {
+  transform: scale(0.97);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Media query */
+
+@media screen and (max-width: 768px) {
+  .card-dealer {
+    width: 100% !important;
+    flex-direction: column;
+    min-height: auto;
+  }
+  .card-dealer img {
+    width: 100% !important;
+    max-height: 15rem;
+    object-fit: cover;
+  }
+}
+
+.upload-img {
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  border: 2px dashed #e0731d;
+  background-color: white;
+}

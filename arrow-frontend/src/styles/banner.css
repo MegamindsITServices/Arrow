@@ -1,0 +1,17 @@
+.banner-img {
+  width: 40%;
+}
+
+/* media query */
+
+@media only screen and (max-width: 600px) {
+  .banner-img {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 800px) {
+  .banner-img {
+    width: 60%;
+  }
+}

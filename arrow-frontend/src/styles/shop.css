@@ -1,0 +1,532 @@
+.shop-by {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.new-badge-shop {
+  position: absolute;
+  top: 0;
+  left: 0px;
+  z-index: 10;
+  border-radius: 999px;
+  background-color: #dc3545;
+  padding: 0.25rem 0.5rem;
+  color: white;
+}
+.page {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: red;
+}
+.card-text {
+  font-size: 1rem;
+  color: black;
+  margin-bottom: 0.5rem;
+}
+.card-name-price {
+  padding-left: 17px;
+}
+
+.card-price {
+  color: black;
+  font-weight: bold;
+}
+.card-8 {
+  position: relative;
+  width: fit-content; /* Set the width to 100% to occupy available space */
+  margin-bottom: 40px;
+  border: 3px solid white;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  transition: all 0.5s ease;
+
+  /* border: 1px solid black; */
+}
+.title-img {
+  display: flex;
+  flex-direction: column;
+}
+
+.title-img p {
+  max-width: 170px;
+}
+.card-view-title {
+  width: 95%; /* Set the width to 100% to occupy available space */
+  margin-bottom: 40px;
+  border: 3px solid white;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  transition: all 0.5s ease;
+  /* border: 1px solid black; */
+}
+.card-view-title:hover {
+  transform: scale(0.96);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.ash-line {
+  border: 10px solid gray;
+}
+
+.card-8:hover {
+  transform: scale(0.96);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.card-desc {
+  color: #333;
+  margin-bottom: 0.5rem;
+  text-align: justify;
+  margin-right: 20px;
+  font-size: 0.8rem;
+  text-wrap: balance;
+  font-family: "roboto", sans-serif;
+}
+.card-title-product {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: red;
+  font-family: "roboto", sans-serif;
+}
+.search-filter {
+  margin: auto;
+  margin-top: 13%;
+  margin-bottom: 30px;
+}
+
+.search-filter:last-child {
+  margin-left: 2rem; /* Adjust the gap between dropdowns */
+}
+.col-md-5 {
+  margin: auto; /* Center the container horizontally */
+}
+
+/* Style the select dropdown */
+.custom-select select {
+  appearance: none; /* Hide default appearance */
+  padding: 10px; /* Adjust padding as needed */
+  border: 1px solid #ccc; /* Border color */
+  border-radius: 4px; /* Rounded corners */
+  background-color: #fff; /* Background color */
+  cursor: pointer; /* Show pointer cursor */
+  transition: border-color 0.3s ease; /* Add transition for hover effect */
+}
+
+/* Hover effect */
+.custom-select select:hover {
+  border-color: #666; /* Change border color on hover */
+}
+
+/* Custom dropdown arrow */
+.select-arrow {
+  position: absolute;
+  right: 10px; /* Adjust positioning as needed */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent; /* Style the arrow */
+  border-right: 5px solid transparent; /* Style the arrow */
+  border-top: 5px solid #333; /* Style the arrow */
+}
+
+/* Style the dropdown options */
+.custom-select select option {
+  padding: 10px; /* Adjust padding as needed */
+}
+.refilter-button {
+  margin-top: 50px;
+  margin-inline-start: 10px;
+  background-color: #e0731d;
+  border: none;
+  color: white;
+  padding: 5px 40px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 8px;
+}
+.refilter-button:hover {
+  background-color: #e0731d;
+}
+.hero-shop {
+  /* background-image: url("../../public/images/shopby.jpg"); */
+  background-color: gray;
+  padding: calc(4rem - 30px) 0 0rem 0;
+  height: 180px;
+  position: relative;
+
+  background-repeat: no-repeat;
+  background-size: cover; /* Ensure the background image covers the entire container */
+  background-position: center; /* Center the background image horizontally and vertically */
+}
+.intro-excerpt-shop {
+  display: flex;
+  justify-content: space-between; /* Distribute items along the main axis */
+  align-items: center;
+  color: white;
+  margin-right: 50%;
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Segoe UI Regular"),
+    url("../../public/fonts/Segoe\ UI.woff") format("woff");
+  margin-top: 75px;
+}
+.product-shop {
+  padding: 0 80px;
+}
+.card-img-top-product {
+  /* border-top-left-radius: 8px;
+  border-top-right-radius: 8px; */
+}
+.card-body-shop {
+  display: flex;
+  flex-direction: column;
+}
+
+.shop-card {
+  margin-top: 20px;
+  margin-bottom: 70px;
+  flex-direction: row;
+  margin-left: 200px;
+  border: none;
+  font-family: "Roboto", sans-serif;
+}
+.shop-hr {
+  border: 1px solid #333;
+}
+.view-list {
+  font-size: 25px;
+  margin-top: 40px;
+  cursor: pointer;
+}
+.view-title {
+  font-size: 35px;
+  margin-right: 20px;
+  margin-top: 40px;
+  cursor: pointer;
+}
+/* .view-list:hover {
+  background-color: #e0731d;
+  color: white;
+  padding: 5px 5px;
+}
+.view-title:hover {
+  background-color: #e0731d;
+  color: white;
+  padding: 5px 5px;
+} */
+.view-list:hover,
+.view-list.active {
+  background-color: #e0731d;
+  color: white;
+  padding: 5px 5px;
+}
+
+/* .view-title.active {
+  background-color: #e0731d;
+  color: white;
+  padding: 5px 5px;
+} */
+
+.more-details {
+  background-color: #e0731d;
+  padding: 2px 9px;
+  font-size: 10px;
+  text-decoration: none;
+  color: #ffffff;
+  border: 2px solid #e0731d;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+
+  margin-bottom: 5px;
+}
+.add-cart-butn {
+  padding: 2px 9px;
+  font-size: 9px;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #e0731d;
+  border: 2px solid #e0731d;
+  cursor: pointer;
+
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+.not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 40px;
+}
+.class-filter {
+  width: 400px;
+}
+@media (max-width: 767px) {
+  .view-list,
+  .view-title {
+    font-size: 20px;
+    margin-top: 20px;
+  }
+  .search-filter {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  .search-filter:last-child {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+  .refilter-button {
+    margin-top: 20px;
+    margin-inline-start: 0;
+  }
+  .class-filter {
+    width: 60px;
+  }
+  .refilter-button {
+    margin-top: -19px;
+    margin-right: 20px;
+    margin-inline-start: 4px;
+    background-color: #e0731d;
+    border: none;
+    color: white;
+    padding: 6px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  .refilter-button:hover {
+    background-color: #e0731d;
+  }
+  .view-list {
+    font-size: 20px;
+    margin-top: -14px;
+    cursor: pointer;
+    margin-left: 13px;
+  }
+  .view-title {
+    font-size: 25px;
+    margin-right: 5px;
+    margin-top: -14px;
+    cursor: pointer;
+  }
+  .product-shop {
+    padding: 0 1rem;
+  }
+  .card-8 {
+    width: fit-content; /* Set the width to 100% to occupy available space */
+    margin-bottom: 40px;
+    border: 3px solid white;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    transition: all 0.5s ease;
+    /* border: 1px solid black; */
+  }
+  .card-view-title {
+    width: 100%; /* Set the width to 100% to occupy available space */
+    margin-bottom: 40px;
+
+    border: 3px solid white;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    transition: all 0.5s ease;
+    /* border: 1px solid black; */
+  }
+  .product-shop-title {
+    margin-left: 14px;
+    display: flex; /* Ensure the container is flex */
+    flex-direction: column;
+    flex-wrap: nowrap; /* Ensure flex items don't wrap to the next line */
+    overflow-x: auto; /* Enable horizontal scrolling if necessary */
+  }
+  .card-title-product {
+    font-size: 10px;
+    margin-bottom: 0.5rem;
+    color: red;
+    font-family: "roboto", sans-serif;
+  }
+  .card-desc {
+    color: #333;
+    margin-bottom: 0.5rem;
+    text-align: justify;
+    margin-right: 20px;
+    font-size: 10px;
+    font-family: "roboto", sans-serif;
+  }
+  .card-price {
+    color: black;
+    font-weight: bold;
+    font-size: 12px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .class-filter {
+    width: 223px;
+  }
+  .refilter-button {
+    margin-top: 26px;
+    margin-right: 20px;
+    margin-inline-start: 4px;
+    background-color: #e0731d;
+    border: none;
+    color: white;
+    padding: 6px 27px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  .view-list {
+    font-size: 27px;
+    margin-top: 28px;
+    cursor: pointer;
+  }
+  .view-title {
+    font-size: 40px;
+    margin-right: 19px;
+    margin-top: 28px;
+    cursor: pointer;
+  }
+  .product-shop {
+    padding: 0 50px;
+  }
+  .card-8 {
+    width: 87%; /* Set the width to 100% to occupy available space */
+    margin-bottom: 40px;
+    border: 3px solid white;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    transition: all 0.5s ease;
+    /* border: 1px solid black; */
+  }
+  .row-cols-md-3 .col {
+    flex: 0 0 50%; /* Set width to 50% for two columns in tablet view */
+    max-width: 50%; /* Set maximum width to 50% for two columns in tablet view */
+  }
+
+  .card-img-top-product {
+    width: 100%; /* Ensure images take full width of their container */
+    height: auto; /* Maintain aspect ratio */
+  }
+  .card-view-title {
+    width: 100%; /* Set the width to 100% to occupy available space */
+    margin-bottom: 40px;
+
+    border: 3px solid white;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    transition: all 0.5s ease;
+    /* border: 1px solid black; */
+  }
+  .product-shop-title {
+    margin-left: 14px;
+    display: flex; /* Ensure the container is flex */
+    flex-direction: column;
+    flex-wrap: nowrap; /* Ensure flex items don't wrap to the next line */
+    overflow-x: auto; /* Enable horizontal scrolling if necessary */
+  }
+  .card-title-product {
+    font-size: 10px;
+    margin-bottom: 0.5rem;
+    color: red;
+    font-family: "roboto", sans-serif;
+  }
+  .card-desc {
+    color: #333;
+    margin-bottom: 0.5rem;
+    text-align: justify;
+    margin-right: 20px;
+    font-size: 10px;
+    font-family: "roboto", sans-serif;
+  }
+  .card-price {
+    color: black;
+    font-weight: bold;
+    font-size: 12px;
+  }
+}
+
+.active-page {
+  background-color: #e0731d;
+  color: white !important;
+}
+
+.page-link {
+  color: #e0731d;
+}
+
+.page-link:hover {
+  color: #e0731d !important;
+  border: 1px solid #e0731d;
+}
+
+.page-link:active {
+  color: #e0731d !important;
+  border: 1px solid #e0731d;
+}
+
+.page-link:focus {
+  color: #e0731d !important;
+  border: 1px solid #e0731d;
+}
+
+.disabled {
+  cursor: not-allowed;
+}
+
+.jump-to {
+  gap: 0.2rem;
+  align-items: center;
+}
+
+.jump-to-text {
+  font-size: 0.9rem;
+  padding-top: 8px;
+  font-weight: 100;
+  color: #e18e4f;
+}
+
+.jump-to-input {
+  width: 60px;
+  color: #e0731d;
+  outline: auto;
+  border-radius: 5px;
+  text-align: center;
+  border: none;
+}
+
+.jump-to-input::-webkit-outer-spin-button,
+.jump-to-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.jump-to-btn {
+  background-color: #e0731d;
+  border: none;
+  color: white;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 8px;
+}

@@ -1,0 +1,297 @@
+.review-edit-button {
+  padding: 3px 23px;
+  font-size: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #007bff;
+  border: 2px solid #007bff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+  margin-left: 3px;
+}
+
+.review-edit-button:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+  border-radius: 5px;
+}
+.review-edit-button:active {
+  background-color: #004080;
+  border-color: #004080;
+}
+.review-dlt-button {
+  padding: 3px 19px;
+  font-size: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: red;
+  border: 2px solid red;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.review-dlt-button:hover {
+  background-color: red;
+  border-color: red;
+  border-radius: 5px;
+}
+.edit-button {
+  padding: 10px 20px;
+  font-size: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #007bff;
+  border: 2px solid #007bff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.edit-button:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+  border-radius: 5px;
+}
+.edit-button:active {
+  background-color: #004080;
+  border-color: #004080;
+}
+.dlt-button {
+  padding: 10px 20px;
+  font-size: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: red;
+  border: 2px solid red;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.dlt-button:hover {
+  border-color: red;
+  background-color: red;
+  border-radius: 5px;
+}
+
+.admin-profile-update {
+  padding: 10px 20px;
+  padding: 10px 20px;
+  font-size: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #e0731d;
+  border: 2px solid #e0731d;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+.admin-profile-update-specific {
+  padding: 10px 20px;
+  padding: 10px 20px;
+  font-size: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #e0731d;
+  border: 2px solid #e0731d;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+  margin-left: 40%;
+}
+.edit-button:active {
+  background-color: red;
+  border-color: red;
+}
+.dealer-update-button {
+  padding: 10px 20px;
+  font-size: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #e0731d;
+  border: 2px solid #e0731d;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.dealer-update-button:hover {
+  background-color: #e0731d;
+  border-color: #e0731d;
+  border-radius: 5px;
+}
+.dealer-update-button:active {
+  background-color: #e0731d;
+  border-color: #e0731d;
+}
+
+.post-dlt-button {
+  padding: 10px 15px;
+  font-size: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: red;
+  border: 2px solid red;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+.Butn {
+  padding: 5px 20px;
+  font-size: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #e0731d;
+  border: 2px solid #e0731d;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+.order-cancel-Butn {
+  padding: 5px 20px;
+  font-size: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #e0731d;
+  border: 2px solid #e0731d;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+.profile-update-Butn {
+  padding: 5px 20px;
+  font-size: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #e0731d;
+  border: 2px solid #e0731d;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+
+  margin-left: 30%;
+}
+.reset-button {
+  /* background-color: red; */
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  border: 2px solid #004080;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 100px;
+  background-color: #004080;
+}
+
+.reset-button:hover {
+  background-color: red;
+  border: 2px solid red;
+}
+
+.remove {
+  font-size: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #000000;
+  background-color: white;
+  border: 2px solid #e0731d;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 20px;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+.remove:hover {
+  background-color: #e0731d;
+  border: 2px solid #e0731d;
+  color: white;
+}
+
+.back-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 5px;
+  left: 3%;
+  background-color: rgba(128, 128, 128, 0.142);
+  color: rgb(58, 57, 57);
+  text-align: center;
+  outline: none;
+  border-radius: 50%;
+  height: 3rem;
+  width: 3rem;
+  font-size: 1rem;
+  padding: 5px;
+}
+
+.back-button:hover {
+  background-color: #e0711d12;
+}
+
+.square-button1 {
+  width: 20%; /* Set width to 50% */
+
+  background-color: rgba(
+    10,
+    213,
+    248,
+    0.888
+  ); /* Set background color to aqua */
+  border: none; /* Remove default button border */
+  border-radius: 0; /* Ensure square corners */
+  margin-top: 8%;
+  padding: 95px 20px;
+}
+.square-button {
+  width: 20%; /* Set width to 50% */
+
+  background-color: rgba(
+    200,
+    237,
+    14,
+    0.672
+  ); /* Set background color to aqua */
+  border: none; /* Remove default button border */
+  border-radius: 0; /* Ensure square corners */
+  margin-top: 8%;
+  padding: 95px 20px;
+}
+.square-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+}
+.button-txt {
+  font-size: 40px;
+  color: black;
+}
+.button2 {
+  height: 250px;
+}
+.button1 {
+  height: 250px;
+}

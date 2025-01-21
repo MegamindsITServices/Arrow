@@ -1,0 +1,446 @@
+.body1 {
+  background-color: #ebebeb;
+  font-family: "Roboto", sans-serif;
+}
+.executive-search-filter {
+  margin: auto;
+  margin-bottom: -4px;
+}
+.executive-search-filter:last-child {
+  margin-left: 0rem; /* Adjust the gap between dropdowns */
+}
+/* Style the select dropdown */
+.executive-custom-select select {
+  appearance: none; /* Hide default appearance */
+  padding: 10px; /* Adjust padding as needed */
+  border: 1px solid #e0731d; /* Border color */
+  border-radius: 4px; /* Rounded corners */
+  background-color: #e0731d; /* Background color */
+  cursor: pointer; /* Show pointer cursor */
+  transition: border-color 0.3s ease; /* Add transition for hover effect */
+  color: white;
+  width: 56%;
+}
+.executive-custom-selects select {
+  appearance: none; /* Hide default appearance */
+  padding: 10px; /* Adjust padding as needed */
+  border: 1px solid #e0731d; /* Border color */
+  border-radius: 4px; /* Rounded corners */
+  background-color: #e0731d; /* Background color */
+  cursor: pointer; /* Show pointer cursor */
+  transition: border-color 0.3s ease; /* Add transition for hover effect */
+  color: white;
+  width: 15%;
+  margin: 12px;
+}
+.option {
+  background-color: #ced4da;
+}
+.hero-5 {
+  background-image: url("../images/new-contact-page.jpg");
+  padding: calc(4rem - 30px) 0 0rem 0;
+  height: 64vh;
+  position: relative;
+  box-shadow: 0px 30px 10px -20px rgba(50, 50, 93, 0.25),
+    0px 30px 60px -30px rgba(0, 0, 0, 0.3),
+    inset 0px -2px 6px 0px rgba(10, 37, 64, 0.35);
+  background-repeat: no-repeat;
+  background-size: cover; /* Ensure the background image covers the entire container */
+  background-position: center; /* Center the background image horizontally and vertically */
+}
+
+.intro-excerpt h1 {
+  font-weight: 700;
+  font-size: 3rem;
+  position: absolute;
+  bottom: 0;
+  left: 4rem;
+}
+.cart {
+  flex: 1; /* Each box takes an equal portion of the available space */
+  margin-right: 5px; /* Decrease margin between boxes */
+
+  background-color: white;
+  transition: background-color 0.3s ease; /* Add transition effect */
+  border-radius: 10px;
+}
+.cart:last-child {
+  margin-right: 3; /* Remove margin from the last box */
+}
+.cart:first-child {
+  margin-left: 1;
+}
+
+.p-1 {
+  display: flex;
+  justify-content: space-between; /* Ensure equal spacing between boxes */
+}
+.cart:hover {
+  background-color: #db7f1a; /* Change background color on hover */
+}
+.shadow {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+@media (min-width: 768px) {
+  .hero {
+    padding: calc(4rem - 30px) 0 4rem 0;
+  }
+}
+@media (min-width: 992px) {
+  .hero {
+    padding: calc(8rem - 30px) 0 8rem 0;
+  }
+}
+.hero .intro-excerpt {
+  position: relative;
+  z-index: 4;
+}
+@media (min-width: 992px) {
+  .hero .intro-excerpt {
+    max-width: 450px;
+  }
+}
+.hero h1 {
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 30px;
+}
+@media (min-width: 1400px) {
+  .hero h1 {
+    font-size: 54px;
+  }
+}
+.hero p {
+  color: rgba(255, 255, 255, 0.5);
+  margin-botom: 30px;
+}
+.hero .hero-img-wrap {
+  position: relative;
+}
+.hero .hero-img-wrap img {
+  position: relative;
+  top: 0px;
+  right: 0px;
+  z-index: 2;
+  max-width: 780px;
+  left: -20px;
+}
+
+@media (min-width: 768px) {
+  .hero .hero-img-wrap img {
+    right: 0px;
+    left: -100px;
+  }
+
+  .intro-excerpt h1 {
+    left: 7rem;
+  }
+}
+@media (min-width: 992px) {
+  .hero .hero-img-wrap img {
+    left: 0px;
+    top: -80px;
+    position: absolute;
+    right: -50px;
+  }
+}
+@media (min-width: 1200px) {
+  .hero .hero-img-wrap img {
+    left: 0px;
+    top: -80px;
+    right: -100px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero .hero-img-wrap:after {
+    top: -40px;
+  }
+}
+.intro-excerpt {
+  display: flex;
+  color: white;
+}
+
+.something {
+  color: #db7f1a;
+  margin-right: 10px;
+}
+.address {
+  margin-top: 31px;
+  color: black;
+  font-size: 1rem;
+}
+
+.location-icon {
+  font-size: 23px;
+  text-align: center;
+}
+.mail {
+  margin-top: 31px;
+  color: black;
+  font-size: 1rem;
+}
+.mail-icon {
+  font-size: 23px;
+}
+.phone {
+  margin-top: 31px;
+  color: black;
+  font-size: 1rem;
+}
+.phone-icon {
+  font-size: 23px;
+}
+.enquiry-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 90px;
+}
+
+.qr {
+  width: 85%;
+  height: auto; /* Adjust height automatically */
+  margin-left: 80%; /* Align to the right */
+  margin-top: 10%;
+}
+.loc-icon {
+  height: 50px; /* Adjust height automatically */
+  width: 30px;
+}
+.input {
+  border-radius: 0;
+  border: 1px solid #ced4da;
+  width: 145%;
+}
+.form {
+  border-radius: 0;
+  border: 1px solid #ced4da;
+  width: 100%;
+}
+.form-control-textarea {
+  border-radius: 0;
+  border: 1px solid #ced4da; /* Set border-radius to 0 for square corners */
+  width: 100%;
+}
+.submit-butn-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.submit-butn {
+  padding: 2px 11px;
+  font-size: 13px;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #db7f1a;
+  border: 2px solid #db7f1a;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+  width: 30%;
+  margin-bottom: 100px;
+}
+.location {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.loc-icon {
+  position: absolute;
+  right: -20%;
+  top: -10px;
+}
+
+.enquiry-text {
+  font-size: 20px;
+}
+.enq {
+  margin-bottom: 10px;
+}
+.intro-excerpt-contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin-top: 435%;
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Segoe UI Regular"),
+    url("../../public/fonts/Segoe\ UI.woff") format("woff");
+}
+.p-1 {
+  display: flex;
+  flex-wrap: wrap; /* Allow flex items to wrap to the next row */
+  justify-content: space-between; /* Distribute items evenly along the main axis */
+}
+
+.cart {
+  flex: 0 0 calc(33.33% - 10px); /* Each cart takes 33.33% of the width with margin */
+  margin-bottom: 10px; /* Adjust spacing between rows */
+}
+.required {
+  color: red;
+}
+@media (max-width: 768px) {
+  .intro-excerpt-contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-top: 120%;
+    font-family: "Segoe UI";
+    font-style: normal;
+    font-weight: normal;
+    margin-left: -57%;
+    src: local("Segoe UI Regular"),
+      url("../../public/fonts/Segoe\ UI.woff") format("woff");
+  }
+  .executive-search-filter {
+    margin-bottom: -29px;
+  }
+  .executive-search-filter {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  .executive-search-filter:last-child {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+  .executive-class-filter {
+    width: 60% !important;
+  }
+  .cart {
+    flex: 0 0 calc(50% - 10px); /* Each cart takes 50% of the width on smaller screens */
+  }
+  .cart {
+    flex: 0 0 calc(100% - 10px); /* Each cart takes 100% of the width on even smaller screens */
+  }
+  .address {
+    margin-top: 24px;
+    color: black;
+    font-size: 1rem;
+  }
+  .location-icon {
+    font-size: 13px;
+    margin-left: 27px;
+  }
+  .mail {
+    margin-top: 24px;
+    color: black;
+    font-size: 1rem;
+  }
+  .mail-icon {
+    font-size: 13px;
+  }
+  .phone {
+    margin-top: 24px;
+    color: black;
+    font-size: 1rem;
+  }
+  .phone-icon {
+    font-size: 13px;
+  }
+  .enquiry-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+  }
+  .form-control {
+    border-radius: 0;
+    border: 1px solid #ced4da; /* Set border-radius to 0 for square corners */
+    width: 100%;
+  }
+  .inputname {
+    font-size: 14px;
+  }
+  .submit-butn {
+    padding: 3px 13px;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #db7f1a;
+    border: 2px solid #db7f1a;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease,
+      border-color 0.3s ease;
+    width: 25%;
+    margin-left: 120px;
+  }
+  .loc-icon {
+    height: 50px; /* Adjust height automatically */
+    width: 30px;
+    margin-left: 20%;
+
+    position: inherit;
+  }
+  .qr {
+    width: 70%;
+    height: 70%; /* Adjust height automatically */
+    margin-left: 16%;
+    margin-bottom: 10px; /* Align to the right */
+    margin-top: 1px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1180px) {
+  .intro-excerpt-contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-top: 561px;
+    font-family: "Segoe UI";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Segoe UI Regular"),
+      url("../../public/fonts/Segoe\ UI.woff") format("woff");
+    margin-left: -11px;
+  }
+  .cart {
+    height: 114px;
+  }
+  .address {
+    margin-top: 31px;
+    color: black;
+    font-size: 12px;
+  }
+  .location-icon {
+    font-size: 15px;
+  }
+  .mail {
+    margin-top: 31px;
+    color: black;
+    font-size: 1rem;
+  }
+  .mail-icon {
+    font-size: 15px;
+  }
+  .phone {
+    margin-top: 31px;
+    color: black;
+    font-size: 13px;
+  }
+  .phone-icon {
+    font-size: 15px;
+  }
+  .submit-butn {
+    padding: 3px 13px;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #db7f1a;
+    border: 2px solid #db7f1a;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease,
+      border-color 0.3s ease;
+    width: 25%;
+    margin-left: 272px;
+  }
+}

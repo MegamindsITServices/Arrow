@@ -1,0 +1,454 @@
+.on-target {
+  margin-left: 13%;
+  color: black;
+  padding-top: 83px;
+  font-size: 20px;
+}
+.double-arrow {
+  font-size: 35px;
+}
+.badge-new {
+  position: absolute;
+  top: 0;
+  margin: 1rem;
+  right: 0;
+  transform: translate(-50%, 0);
+  border-radius: 999px; /* for a rounded pill effect */
+  background-color: #dc3545; /* red color for danger */
+  padding: 0.25rem 0.5rem; /* adjust padding as needed */
+  color: white;
+}
+.body {
+  background-image: url("../../public/images/new-home-back.jpg");
+  width: 100%;
+  height: 560px;
+  background-repeat: no-repeat;
+  background-size: cover; /* Ensure the background image covers the entire container */
+  background-position: center; /* Center the background image horizontally and vertically */
+}
+.custom-carousel-controls {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: auto;
+  display: flex;
+  justify-content: space-between; /* Ensure equal spacing between icons */
+}
+
+.custom-carousel-controls img {
+  width: 40px; /* Adjust size of custom arrow images */
+  height: auto;
+  cursor: pointer;
+}
+.carousel-container {
+  width: 128%;
+  height: 72%;
+  margin-left: -58px;
+}
+.image-text {
+  position: absolute;
+  top: 58%;
+  left: 45%;
+  right: 0%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  color: black;
+}
+.image-texts {
+  position: absolute;
+  top: 58%;
+  left: 45%;
+  right: 0%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  color: black;
+}
+
+.mt {
+  margin-top: 90px;
+}
+
+.something-learn {
+  margin-top: 27px;
+  font-size: 48px;
+  /* color: rgb(214, 210, 210); */
+  mix-blend-mode: difference;
+  flex-direction: column;
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Segoe UI Regular"),
+    url("../../public/fonts/Segoe\ UI.woff") format("woff");
+}
+.intro-excerpt {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.first-line {
+  display: flex;
+  align-items: center;
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Segoe UI Regular"),
+    url("../../public/fonts/Segoe\ UI.woff") format("woff");
+}
+.card-img-homepage {
+  height: 250px;
+  width: 199px;
+  margin-left: 46px;
+}
+.second-line {
+  display: flex;
+  align-items: center;
+  margin-top: -30px;
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Segoe UI Regular"),
+    url("../../public/fonts/Segoe\ UI.woff") format("woff");
+}
+.carousel-item.custom-carousel .carousel-caption {
+  display: flex;
+  justify-content: center; /* Horizontally center the content */
+  align-items: center; /* Vertically center the content */
+  height: 100%;
+  margin-right: 40%;
+}
+
+.carousel-item.custom-carousel .intro-exc {
+  text-align: left; /* Align text to the left */
+}
+
+.carousel-item.custom-carousel .heading1 {
+  margin: 0; /* Reset margin */
+}
+.carousel-item.custom-carousel .heading1 {
+  display: block; /* Hide the h1 on mobile */
+}
+.carousel-item.custom-carousel .heading1-mobile {
+  display: none; /* Show the p on mobile */
+}
+.intro-excerpt1 {
+  display: block;
+  margin-bottom: 20%;
+  margin-left: 0px;
+}
+.first-mobile {
+  display: none;
+}
+.learn-mobile {
+  color: #e0731d;
+}
+.everyday-mobile {
+  color: #e0731d;
+}
+.d-block {
+  margin: 0;
+  margin-bottom: 28px;
+}
+.second-image-btn {
+  margin-inline-start: 14%;
+}
+
+.orange {
+  color: #e0731d;
+  font-size: 50px;
+}
+.black {
+  color: black;
+  font-size: 45px;
+}
+/* .card-1 {
+  height: 425px;
+  width: 325px;
+} */
+.card-img {
+  height: 260px;
+  margin-top: 20px;
+  width: 190px;
+}
+.first-text {
+  margin-bottom: 18%;
+}
+.product-cards-home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-inline-start: 20px;
+}
+.button-sub {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #e0731d;
+  border: 2px solid #e0731d;
+
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+.mobile-response {
+  display: none;
+}
+
+.custom-left-arrow,
+.custom-right-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px; /* Adjust width as needed */
+  height: 30px; /* Adjust height as needed */
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.custom-left-arrow {
+  left: 0;
+  background-image: url("../images/new-icon.png"); /* Add path to right arrow icon */
+  background-size: cover;
+  border-radius: 50%;
+  background-color: white;
+  margin-left: 0px;
+  transform: scaleX(-1); /* Flip the image horizontally */
+}
+
+.custom-right-arrow {
+  right: 0;
+  background-image: url("../images/new-icon.png"); /* Add path to right arrow icon */
+  background-size: cover;
+  border-radius: 50%;
+  background-color: white;
+  margin-right: 2px;
+}
+
+.custom-left-arrow:before,
+.custom-right-arrow:before {
+  color: orange;
+}
+
+.subscribe {
+  background-color: #7c838b;
+  height: 100px;
+  position: relative;
+  font-family: "Roboto", sans-serif;
+}
+@media (max-width: 768px) {
+  .first-line {
+    display: flex;
+    align-items: center;
+    font-family: "Segoe UI";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Segoe UI Regular"),
+      url("../../public/fonts/Segoe\ UI.woff") format("woff");
+  }
+  .want-know {
+    margin-right: 11px;
+  }
+  .badge-new {
+    position: absolute;
+    top: 0;
+    margin: 1rem;
+    right: -37px;
+    transform: translate(-50%, 0);
+    border-radius: 999px; /* for a rounded pill effect */
+    background-color: #dc3545; /* red color for danger */
+    padding: 0.25rem 0.5rem; /* adjust padding as needed */
+    color: white;
+  }
+  .something-learn {
+    margin-top: 10px;
+    font-size: 15px;
+    color: white;
+    flex-direction: column;
+    font-family: "Segoe UI";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Segoe UI Regular"),
+      url("../../public/fonts/Segoe\ UI.woff") format("woff");
+  }
+  .product-cards-home {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .card-img {
+    height: 250px;
+    width: 140px;
+  }
+  .card-img-homepage {
+    height: 250px;
+    width: 199px;
+    margin-left: 0px;
+  }
+  .second-line {
+    display: flex;
+    align-items: center;
+
+    font-family: "Segoe UI";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Segoe UI Regular"),
+      url("../../public/fonts/Segoe\ UI.woff") format("woff");
+  }
+  .square-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+  }
+  .button2 {
+    height: 140px;
+  }
+  .button1 {
+    height: 140px;
+  }
+  .image-text {
+    position: absolute;
+    top: 58%;
+    left: 42%;
+    right: 0%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+  }
+  .image-texts {
+    position: absolute;
+    top: 58%;
+    left: 45%;
+    right: 0%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+  }
+  .on-target {
+    margin-left: 8%;
+    color: black;
+    padding-top: -47px;
+    font-size: 16px;
+  }
+  .about-arrow {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+  }
+  .mt {
+    margin-top: 50px; /* Adjusted margin for smaller screens */
+  }
+
+  .carousel-item.custom-carousel .heading1 {
+    display: none;
+  }
+  .carousel-item.custom-carousel .heading1-mobile {
+    display: block;
+    margin-left: 20px;
+    /* margin-top: 40px; */
+  }
+  .carousel-container {
+    width: 91%;
+    height: 72%;
+    margin-left: 5px;
+  }
+
+  .intro-excerpt1 {
+    display: none;
+  }
+  .first-mobile {
+    display: block;
+    margin-left: 0;
+    margin-bottom: 15%;
+  }
+  .subscribe::before {
+    height: 10px; /* Adjusted height for smaller screens */
+  }
+  /* .about-arrow {
+    padding-top: 10px; 
+    flex-direction: column; 
+    text-align: center; 
+  } */
+  .about-arrow {
+    display: flex;
+    flex-direction: column;
+  }
+  .mobile-response {
+    display: block;
+  }
+  .desktop {
+    display: none;
+  }
+  .mt {
+    margin-top: 30px; /* Adjusted margin for smaller screens */
+  }
+  .input-group {
+    display: flex;
+    align-items: center; /* Align items vertically */
+  }
+  .subscribe {
+    background-color: #7c838b;
+    height: auto;
+    position: relative;
+    font-family: "Roboto", sans-serif;
+  }
+  .form-floating {
+    width: 80%; /* Make input width 100% for smaller screens */
+    max-width: 360px; /* Limit input width */
+    margin-left: 20px;
+  }
+  .form-floating input[type="email"] {
+    width: calc(101% - 14px);
+  }
+  .button-sub {
+    display: inline-block;
+    padding: 5px 20px;
+    font-size: 16px;
+    margin-top: 15px;
+    margin-right: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #e0731d;
+    border: 2px solid #e0731d;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  .card-img-homepage {
+    height: 230px;
+    width: 140px;
+    display: block;
+  }
+  .card-1 {
+    width: 50%; /* Ensure each card takes up half the width of the screen */
+    margin: 0;
+    height: auto;
+    display: block;
+    padding: 2 0px;
+    padding-right: 6px;
+  }
+}
+/* @media (min-width: 769px) and (max-width: 1080px) {
+  .intro-excerpt1 {
+    margin-bottom: 70px;
+  }
+} */
