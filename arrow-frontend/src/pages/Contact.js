@@ -123,7 +123,7 @@ const Contact = () => {
                   {" "}
                   <LuMailCheck className="mail-icon" />{" "}
                 </span>
-                mail@arrowpublicationindia.com
+                mail@arrowpublicationsindia.com
               </div>
             </div>
           </div>

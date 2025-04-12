@@ -255,7 +255,7 @@ const CartPage = () => {
       quantityData[item._id] = quantities[item._id];
     });
 
-    const shippingAddress = `${auth?.user?.address.landmark}, ${auth?.user?.address.city}, ${auth?.user?.address.district}, ${auth?.user?.address.state}, ${auth?.user?.address.pincode}`;
+    const shippingAddress = `Shipping Address: ${auth?.user?.address.shippingAddress} Profile Address: ${auth?.user?.address.landmark}, ${auth?.user?.address.city}, ${auth?.user?.address.district}, ${auth?.user?.address.state}, ${auth?.user?.address.pincode}`;
 
     const orderData = {
       products: productIDs,
