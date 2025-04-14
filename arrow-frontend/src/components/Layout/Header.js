@@ -70,7 +70,7 @@ const Header = () => {
           <div className="phone-mail">
             <h6 className="header-phone ">
               <FaPhoneAlt />
-              +91- <span>9100999026</span>
+              +91 - <span>9100999026</span>
             </h6>
 
             <h6 className="header-mail ms-2">

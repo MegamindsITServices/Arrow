@@ -47,7 +47,7 @@ const corsOptions = {
   },
   credentials: true,
 };
-
+console.log("i am in server.js file");
 //middlewares
 app.use(cors());
 // app.options("*", cors(corsOptions));
