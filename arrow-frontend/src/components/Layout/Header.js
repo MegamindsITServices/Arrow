@@ -259,6 +259,16 @@ const Header = () => {
                   Arrow Activity
                 </NavLink>
               </li>
+                <div className="dari">|</div>
+              <li>
+                <NavLink
+                  activeClassName="active-link"
+                  to="/careers"
+                  className="nav-link"
+                >
+                  Careers
+                </NavLink>
+              </li>
               <div className="dari">|</div>
               <li>
                 <NavLink

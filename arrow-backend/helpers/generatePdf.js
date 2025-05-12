@@ -17,10 +17,11 @@ export const generateInvoice = (order, user, filePath) => {
   doc.font(fontPath);
 
   const extraY = 100;
+
   // Logo and Header
   doc
     .image(headerPath, 50, 45, {
-      width: doc.page.width - 100, // 100 accounts for the left and right margins (50 each)
+      width: doc.page.width - 100,
       align: "center",
     })
     .fillColor("#444444")
@@ -36,7 +37,7 @@ export const generateInvoice = (order, user, filePath) => {
     .text(`Order ID: ${order._id}`, 350, 140 + extraY)
     .text(`Transaction ID: ${order.transactionId}`, 350, 155 + extraY);
 
-  // Company and Invoice details
+  // Company Information
   const customerY = 180 + extraY;
   doc
     .fillColor("#000000")
@@ -48,16 +49,33 @@ export const generateInvoice = (order, user, filePath) => {
     .text("mail@arrowpublicationsindia.com", 50, customerY + 60)
     .text("GSTIN 36AAHCA3364M1ZE", 50, customerY + 75);
 
-  // Customer Information and Invoice details on right
-  doc
-    .fontSize(11)
-    .text("Customer Name and Address", 350, customerY)
-    .text(`Name: ${user.name}`, 350, customerY + 15)
-    .text(`Address: ${order.address}`, 350, customerY + 30)
-    .text(`Contact: ${order?.buyer?.phone}`, 350, customerY + 75);
+  // Customer Information (Right Side)
+  let rightBlockY = customerY;
+  doc.fontSize(11).fillColor("#000000");
+
+  doc.text("Customer Name and Address", 350, rightBlockY);
+  rightBlockY += 15;
+
+  const nameText = `Name: ${user.name}`;
+  doc.text(nameText, 350, rightBlockY);
+  rightBlockY += doc.heightOfString(nameText, { width: 200 }) + 5;
+
+  const addressText = `Address: ${order.address}`;
+  const addressOptions = {
+    width: 200,
+    align: "left",
+  };
+  doc.text(addressText, 350, rightBlockY, addressOptions);
+  rightBlockY += doc.heightOfString(addressText, addressOptions) + 5;
+
+  const contactText = `Contact: ${order?.buyer?.phone}`;
+  doc.text(contactText, 350, rightBlockY);
+  rightBlockY += doc.heightOfString(contactText) + 5;
+
+  // Set tableTop dynamically based on content height
+  const tableTop = Math.max(rightBlockY + 30, customerY + 100);
 
   // Product Table Header
-  const tableTop = 300 + extraY;
   doc
     .fontSize(12)
     .fillColor("#444444")
@@ -67,23 +85,17 @@ export const generateInvoice = (order, user, filePath) => {
     .text("RATE", 350, tableTop)
     .text("TOTAL AMT.", 450, tableTop);
 
-  doc
-    .moveTo(50, tableTop + 20)
-    .lineTo(550, tableTop + 20)
-    .stroke();
+  doc.moveTo(50, tableTop + 20).lineTo(550, tableTop + 20).stroke();
 
   // Product List
   let position = tableTop + 25;
   order.products.forEach((product, index) => {
     const quantity = order?.quantities[index]?.quantity;
-    // const price = (
-    //   order.payment / order.quantities.reduce((acc, q) => acc + q.quantity, 0)
-    // ).toFixed(2);
     const total = (quantity * product.price).toFixed(2);
 
     doc
       .text(index + 1, 50, position)
-      .text(product.name, 100, position)
+      .text(product.name, 100, position, { width: 180 }) // wrap product name
       .text(quantity, 300, position)
       .text(`Rs. ${product.price}`, 350, position)
       .text(`Rs. ${total}`, 450, position);
@@ -91,7 +103,6 @@ export const generateInvoice = (order, user, filePath) => {
     position += 20;
   });
 
-  // Line after products
   doc.moveTo(50, position).lineTo(550, position).stroke();
 
   // Amount Details
@@ -100,20 +111,14 @@ export const generateInvoice = (order, user, filePath) => {
     .fontSize(12)
     .text("Total Amount", 330, amountY)
     .text(
-      `Rs. ${(order.payment + order.discount - order.shippingAmount).toFixed(
-        2
-      )}`,
+      `Rs. ${(order.payment + order.discount - order.shippingAmount).toFixed(2)}`,
       470,
       amountY
     )
     .text("Discount", 330, amountY + 15)
     .text(`Rs. ${order.discount}`, 470, amountY + 15)
     .text("Net Amount", 330, amountY + 30)
-    .text(
-      `Rs. ${(order.payment - order.shippingAmount).toFixed(2)}`,
-      470,
-      amountY + 30
-    )
+    .text(`Rs. ${(order.payment - order.shippingAmount).toFixed(2)}`, 470, amountY + 30)
     .text("Shipping Amount", 330, amountY + 45)
     .text(`Rs. ${order.shippingAmount}`, 470, amountY + 45)
     .text("Round-off", 330, amountY + 60)
@@ -128,15 +133,20 @@ export const generateInvoice = (order, user, filePath) => {
     .text("Amount payable in words:", 50, payableY)
     .text(`${numberToWords(order.payment)}`, 200, payableY);
 
-  // Footer
+  // Add footer only if enough space remains; otherwise, create new page
+  const footerY = payableY + 50;
+  if (footerY > doc.page.height - 50) {
+    doc.addPage();
+  }
+
   doc
     .fontSize(10)
     .text(
       "Your purchase means a lot to us! Enjoy your read and thank you again.",
       50,
-      700,
+      doc.page.height - 60,
       { align: "center", width: 500 }
     );
-  // End the document
+
   doc.end();
 };

@@ -69,6 +69,7 @@ import SubAdminOrders from "./pages/Subadmin/SubAdminOrders";
 import SubAdminProfile from "./pages/Subadmin/SubAdminProfile";
 import SubAdminUpdatePassword from "./pages/Subadmin/SubAdminUpdatePassword";
 import SubAdminDash from "./pages/Subadmin/SubAdminDash";
+import Carrers from "./pages/Carrers";
 // import OwnerRoute from "./components/Routes/OwnerRoutes";
 // import OwnerDashboard from "./pages/Owners/OwnerDashboard";
 
@@ -87,7 +88,7 @@ function App() {
         <Route path="/admin-search" element={<SearchAdmin />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/textbook-gallery" element={<TextBookGallery />} />
-
+        <Route path="/careers" element={<Carrers/>}/>
         <Route path="/dashboard" element={<PrivateRoute />}>
           <Route path="user" element={<Dashboard />} />
           <Route path="user/dashboard" element={<Dashboard />} />
