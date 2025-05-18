@@ -3,6 +3,43 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import Layout from '../components/Layout/Layout';
 const Carrers = () => {
+    const cardStyle = {
+    maxWidth: '900px',
+    margin: '50px auto',
+    padding: '30px',
+    boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+    backgroundColor: '#fff',
+    borderRadius: '8px',
+  };
+
+  const headingStyle = {
+    color: '#f7941d',
+    fontWeight: 'bold',
+    marginBottom: '20px',
+  };
+
+  const subHeadingStyle = {
+    fontWeight: 'bold',
+    fontSize: '18px',
+    marginBottom: '5px',
+    color:'black'
+  };
+
+  const labelStyle = {
+    fontWeight: 'bold',
+    color:'black'
+  };
+
+  const emailStyle = {
+    fontWeight: 'bold',
+    color: '#000',
+  };
+const container={
+  backgroundColor: '#f8f9fa',
+  paddingTop:'20px',
+  paddingBottom:'20px',
+}
+
   return (
     <div>
         <Helmet>
@@ -23,63 +60,51 @@ const Carrers = () => {
       </div>
 
       {/* Join Our Team Section */}
-      <div className='flex flex-column align-items-center justify-content-center card !w-full'>
- <div className="container text-center py-5 flex flex-column align-items-center">
-        <h2 className="text-secondary mb-2">Join Our Team</h2>
-        <p className="text-muted ">Build your career with us at Arrow Publications</p>
-      </div>
+<div className="w-full d-flex justify-content-center align-items-center">
+  <div className="text-secondary d-flex flex-column align-items-center justify-content-center py-5 ">
+    <h1 className="fw-bold">Join Our Team</h1>
+    <h6 className="fw-bold">Build your career with us at Arrow Publications</h6>
+  </div>
+</div>
 
-      {/* Open Positions Section */}
-      <div className="container pb-5 w-full  flex-column align-items-center justify-content-center">
-        <div className="row justify-content-center">
-          <div className="col-md-10 col-lg-8">
-            <div className="bg-white shadow-sm border-0 mb-5">
-              <div className="card-body p-4">
-                <h3 className="text-warning mb-4">Open Positions</h3>
-                
-                <div className="job-listing">
-                  <h4 className="text-dark">Marketing Executive (Education Sector)</h4>
-                  <p className="text-muted small">Pan-India (as per assigned territory)</p>
-                  
-                  <p>
-                    Are you passionate about the school education sector and love connecting with educators? Here's your opportunity to join a 
-                    dynamic team that shapes the future of learning!
-                  </p>
-                  
-                  <ul className="mb-4">
-                    <li><strong>Age Group:</strong> 30 – 35 years</li>
-                    <li><strong>Experience:</strong> 2-3 years (preferably in educational publishing or similar)</li>
-                  </ul>
-                  
-                  <p className="fw-bold mb-2">Key Responsibilities:</p>
-                  <ul className="mb-4">
-                    <li>Promote and market school textbooks to schools, educators, and academic institutions</li>
-                    <li>Build strong, lasting relationships with principals, teachers, and academic coordinators</li>
-                    <li>Travel extensively within the assigned territory to drive outreach and engagement</li>
-                    <li>Represent and position educational products in line with CBSE, ICSE, and State Board requirements</li>
-                  </ul>
-                  
-                  <p className="fw-bold mb-2">What We're Looking For:</p>
-                  <ul className="mb-4">
-                    <li>Excellent communication, interpersonal, and persuasion skills</li>
-                    <li>A proactive, self-motivated, and results-driven mindset</li>
-                    <li>Familiarity with the Indian school education ecosystem</li>
-                    <li>Experience in educational publishing or a related field is a strong advantage</li>
-                  </ul>
-                  
-                  <p className="mt-4">
-                    If you're ready to make a meaningful impact in education and thrive on the road, we'd love to hear from you!
-                  </p>
-                  
-                  <p>Send your resume to <a href="mailto:mail@arrowpublicationsindia.com" className="text-primary">mail@arrowpublicationsindia.com</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
+   <div className=" " style={container}>
+      <div style={cardStyle} >
+        <h4 style={headingStyle}>Open Positions</h4>
+
+        <h5 style={subHeadingStyle}>Marketing Executive (Education Sector)</h5>
+        <p className="text-muted">Pan-India (as per assigned territory)</p>
+
+        <p className='text-black'>
+          Are you passionate about the school education sector and love connecting with educators? Here's your opportunity to join a dynamic team that shapes the future of learning!
+        </p>
+
+        <ul className="list-unstyled">
+          <li className='text-black'><span style={labelStyle}>Age Group:</span> 30 – 35 years</li>
+          <li className='text-black'><span style={labelStyle}>Experience:</span> 2–3 years (preferably in educational publishing or similar)</li>
+        </ul>
+
+        <p style={labelStyle}>Key Responsibilities:</p>
+        <ul className='text-black'>
+          <li>Promote and market school textbooks to schools, educators, and academic institutions</li>
+          <li>Build strong, lasting relationships with principals, teachers, and academic coordinators</li>
+          <li>Travel extensively within the assigned territory to drive outreach and engagement</li>
+          <li>Represent and position educational products in line with CBSE, ICSE, and State Board requirements</li>
+        </ul>
+
+        <p style={labelStyle}>What We're Looking For:</p>
+        <ul className='text-black'>
+          <li>Excellent communication, interpersonal, and persuasion skills</li>
+          <li>A proactive, self-motivated, and results-driven mindset</li>
+          <li>Familiarity with the Indian school education ecosystem</li>
+          <li>Experience in educational publishing or a related field is a strong advantage</li>
+        </ul>
+
+        <p className='text-black'>If you're ready to make a meaningful impact in education and thrive on the road, we’d love to hear from you!</p>
+        <p>Send your resume to <span style={emailStyle}>mail@arrowpublicationsindia.com</span></p>
       </div>
-      </div>
-     
+    </div>
+
                 </Layout>
     </div>
   );
