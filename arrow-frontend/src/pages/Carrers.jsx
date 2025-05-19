@@ -80,7 +80,7 @@ const container={
         </p>
 
         <ul className="list-unstyled">
-          <li className='text-black'><span style={labelStyle}>Age Group:</span> 30 – 35 years</li>
+          <li className='text-black'><span style={labelStyle}>Age Group:</span> 25 – 35 years</li>
           <li className='text-black'><span style={labelStyle}>Experience:</span> 2–3 years (preferably in educational publishing or similar)</li>
         </ul>
 
