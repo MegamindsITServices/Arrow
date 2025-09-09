@@ -1,13 +1,10 @@
 {
   "files": {
     "main.css": "/static/css/main.29821e5e.css",
-    "main.js": "/static/js/main.003e4597.js",
+    "main.js": "/static/js/main.516772a6.js",
     "static/js/787.d5fa4d18.chunk.js": "/static/js/787.d5fa4d18.chunk.js",
     "static/media/arrow-owners.png": "/static/media/arrow-owners.a462c7a9f482770c364c.png",
     "static/media/Nature-home-page.jpg": "/static/media/Nature-home-page.153e5f56eea7c18d2e0d.jpg",
-    "static/media/Chukkala Suresh.PNG": "/static/media/Chukkala Suresh.59e4c8a07416d503b29b.PNG",
-    "static/media/Srinivasa Rao.PNG": "/static/media/Srinivasa Rao.56c02147d17f3f201610.PNG",
-    "static/media/Subba Rao.PNG": "/static/media/Subba Rao.d3da0b5f2407b8adbbe0.PNG",
     "static/media/Kid reading.jpg": "/static/media/Kid reading.50d3de52eea3b0997954.jpg",
     "static/media/Nature 4.jpg": "/static/media/Nature 4.66a3128a5225fa8f6842.jpg",
     "static/media/read_grow-new.jpg": "/static/media/read_grow-new.2fb365113686cf972378.jpg",
@@ -16,8 +13,11 @@
     "static/media/Growth-Path.jpg": "/static/media/Growth-Path.17d314ecc68ddd672022.jpg",
     "static/media/qr.jpg": "/static/media/qr.ee297da13dc8efcc13d4.jpg",
     "static/media/pdfimg.png": "/static/media/pdfimg.2a19bfdb0b1244f54fc5.png",
-    "static/media/CVB Krishna.PNG": "/static/media/CVB Krishna.553ba8ca6de062f2c27d.PNG",
+    "static/media/CVB Krishna.PNG": "/static/media/CVB Krishna.b2218ed66a9fa795fffa.PNG",
+    "static/media/Subba Rao.PNG": "/static/media/Subba Rao.04f8815a5969f77efb06.PNG",
+    "static/media/Chukkala Suresh.PNG": "/static/media/Chukkala Suresh.a177c59eff2941abc429.PNG",
     "static/media/new-growth-path-img.jpg": "/static/media/new-growth-path-img.b3d0f8728ec4284691bf.jpg",
+    "static/media/Srinivasa Rao.PNG": "/static/media/Srinivasa Rao.3153f342cabab3f8b6dd.PNG",
     "static/media/new-contact-page.jpg": "/static/media/new-contact-page.90cbe7eaeab4561abad7.jpg",
     "static/media/about-background.jpg": "/static/media/about-background.07e7bb9f582d8d208a28.jpg",
     "static/media/Segoe UI Bold.woff": "/static/media/Segoe UI Bold.21ecd6932d8c6e2ae14e.woff",
@@ -28,11 +28,11 @@
     "static/media/revicons.woff": "/static/media/revicons.e8746a624ed098489406.woff",
     "index.html": "/index.html",
     "main.29821e5e.css.map": "/static/css/main.29821e5e.css.map",
-    "main.003e4597.js.map": "/static/js/main.003e4597.js.map",
+    "main.516772a6.js.map": "/static/js/main.516772a6.js.map",
     "787.d5fa4d18.chunk.js.map": "/static/js/787.d5fa4d18.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.29821e5e.css",
-    "static/js/main.003e4597.js"
+    "static/js/main.516772a6.js"
   ]
 }
