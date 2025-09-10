@@ -26,6 +26,7 @@ const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [banners, setBanners] = useState([]);
   const [getHomeBook, setGetHomeBook] = useState([]);
+  const bannersWithText = [0, 1, 2];
 
   const increaseVisitorCount = async () => {
     await axios.get("https://api.arrowpublications.in/api/v1/visitor-count");
@@ -131,6 +132,8 @@ const HomePage = () => {
                   className="d-block w-100"
                   style={{ width: "100%", height: "auto" }} // Set fixed dimensions
                 />
+                {/* Check if the current banner index is in our array */}
+              {bannersWithText.includes(index) && (
                 <div className="carousel-caption text-start">
                   <div className="intro-excerpt1">
                     <div className="first-line">
@@ -157,6 +160,7 @@ const HomePage = () => {
                     </p>
                   </div>
                 </div>
+              )}
               </div>
             ))}
 
