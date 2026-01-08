@@ -43,11 +43,13 @@ export const createNewreleaseController = async (req, res) => {
 
 export const getNewReleaseController = async (req, res) => {
   try {
-    const newRelease = await NewReleaseModel.find({});
+    const newRelease = await NewReleaseModel.find({})
+      .select("-bookphoto")
+      .sort({ createdAt: -1 });
 
     res.status(200).send({
       success: true,
-
+      count: newRelease.length,
       message: "All New Releases",
       newRelease,
     });
