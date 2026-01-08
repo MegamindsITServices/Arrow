@@ -1,3 +1,4 @@
+
 import PDFDocument from "pdfkit";
 import fs from "fs";
 import path from "path";
@@ -150,3 +151,4 @@ export const generateInvoice = (order, user, filePath) => {
 
   doc.end();
 };
+
